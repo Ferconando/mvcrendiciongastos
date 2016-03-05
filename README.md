@@ -3,7 +3,7 @@ Proyecto MVC Rendición de Gastos
 !
 Proyecto:Rendición de gastos
 
-Objetivo: Control de gastos realizados por viajes.
+Objetivo: Control de gastos realizados por viaticos de viaje.
 
 Requerimientos:
 * Registrar los gastos personal por Semana: 
