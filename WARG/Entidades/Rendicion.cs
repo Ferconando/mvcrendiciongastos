@@ -41,8 +41,8 @@ namespace Entidades
         [Required]//NOT NULL
         public string PERIODO { get; set; }
                 
-        // Creo el arreglo de Peliculas
-        public virtual List<RendicionDetalle> RendicionDetalle { get; set; }
-       // public virtual Director Director { get; set; }
+        // Creo el arreglo de Rendicion Detalle y Motivo Gasto
+        public virtual List<RendicionDetalle> RendicionDetalle { get; set; }        
+       
     }
 }

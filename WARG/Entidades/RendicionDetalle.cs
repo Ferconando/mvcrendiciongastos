@@ -22,7 +22,7 @@ namespace Entidades
         [Required]//NOT NULL
         public string CONCEPTO_ITEM { get; set; }
         
-        public int SECUENCIA { get; set; }
+        //public int SECUENCIA { get; set; }
         public string TIPO_DOCTO { get; set; }
         public string NUMERO_DOCTO { get; set; }
         public string RAZON_SOCIAL { get; set; }
@@ -31,5 +31,6 @@ namespace Entidades
 
         //Relacion con el padre
         public virtual Rendicion Rendicion { get; set; }
+        public virtual List<MotivoGasto> MotivoGasto { get; set; }
     }
 }
