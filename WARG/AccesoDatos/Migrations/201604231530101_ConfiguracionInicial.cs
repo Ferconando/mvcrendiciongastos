@@ -11,40 +11,37 @@ namespace AccesoDatos.Migrations
                 "dbo.MotivoGasto",
                 c => new
                     {
-                        idMotivo = c.Int(nullable: false, identity: true),
-                        Motivo = c.Int(nullable: false),
-                        RendicionDetalle_RendicionDetalleID = c.Int(),
+                        MotivoID = c.Int(nullable: false, identity: true),
+                        Motivo = c.String(nullable: false),
                     })
-                .PrimaryKey(t => t.idMotivo)
-                .ForeignKey("dbo.RendicionDetalle", t => t.RendicionDetalle_RendicionDetalleID)
-                .Index(t => t.RendicionDetalle_RendicionDetalleID);
+                .PrimaryKey(t => t.MotivoID);
             
             CreateTable(
                 "dbo.RendicionDetalle",
                 c => new
                     {
                         RendicionDetalleID = c.Int(nullable: false, identity: true),
-                        NumeroPlanilla = c.Int(nullable: false),
+                        RendicionID = c.Int(nullable: false),
+                        MotivoID = c.Int(nullable: false),
                         FECHA_GASTO = c.DateTime(nullable: false),
-                        CONCEPTO_ITEM = c.String(nullable: false),
                         SECUENCIA = c.Int(nullable: false),
                         TIPO_DOCTO = c.String(),
                         NUMERO_DOCTO = c.String(),
                         RAZON_SOCIAL = c.String(),
                         GLOSA = c.String(),
                         MONTO_LINEA = c.Double(nullable: false),
-                        Rendicion_RendicionID = c.Int(),
                     })
                 .PrimaryKey(t => t.RendicionDetalleID)
-                .ForeignKey("dbo.Rendicion", t => t.Rendicion_RendicionID)
-                .Index(t => t.Rendicion_RendicionID);
+                .ForeignKey("dbo.MotivoGasto", t => t.MotivoID, cascadeDelete: true)
+                .ForeignKey("dbo.Rendicion", t => t.RendicionID, cascadeDelete: true)
+                .Index(t => t.RendicionID)
+                .Index(t => t.MotivoID);
             
             CreateTable(
                 "dbo.Rendicion",
                 c => new
                     {
                         RendicionID = c.Int(nullable: false, identity: true),
-                        NumeroPLanillaID = c.Int(nullable: false),
                         FICHA_EMPLEADO = c.String(nullable: false),
                         FECHA_RENDICION_INI = c.DateTime(nullable: false),
                         FECHA_RENDICION_FIN = c.DateTime(nullable: false),
@@ -54,8 +51,6 @@ namespace AccesoDatos.Migrations
                         FECHA_CAMBIO_ESTADO = c.DateTime(nullable: false),
                         FECHA_CREACION = c.DateTime(nullable: false),
                         GLOSA_GASTOS = c.String(nullable: false),
-                        GLOSA_MOVILIDAD = c.String(nullable: false),
-                        PERIODO = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.RendicionID);
             
@@ -63,10 +58,10 @@ namespace AccesoDatos.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.MotivoGasto", "RendicionDetalle_RendicionDetalleID", "dbo.RendicionDetalle");
-            DropForeignKey("dbo.RendicionDetalle", "Rendicion_RendicionID", "dbo.Rendicion");
-            DropIndex("dbo.RendicionDetalle", new[] { "Rendicion_RendicionID" });
-            DropIndex("dbo.MotivoGasto", new[] { "RendicionDetalle_RendicionDetalleID" });
+            DropForeignKey("dbo.RendicionDetalle", "RendicionID", "dbo.Rendicion");
+            DropForeignKey("dbo.RendicionDetalle", "MotivoID", "dbo.MotivoGasto");
+            DropIndex("dbo.RendicionDetalle", new[] { "MotivoID" });
+            DropIndex("dbo.RendicionDetalle", new[] { "RendicionID" });
             DropTable("dbo.Rendicion");
             DropTable("dbo.RendicionDetalle");
             DropTable("dbo.MotivoGasto");

@@ -14,23 +14,23 @@ namespace Entidades
         public int RendicionDetalleID { get; set; }
         //[MaxLength(100)]
         [Required]//NOT NULL
-        public int NumeroPlanilla { get; set; }
+        public int RendicionID { get; set; }
+        [Required]//NOT NULL
+        public int MotivoID { get; set; }
         //[MaxLength(100)]
         [Required]//NOT NULL
         public DateTime FECHA_GASTO { get; set; }
-        //[MaxLength(50)]
         [Required]//NOT NULL
-        public string CONCEPTO_ITEM { get; set; }
-        
-        //public int SECUENCIA { get; set; }
+        public int SECUENCIA { get; set; }
         public string TIPO_DOCTO { get; set; }
         public string NUMERO_DOCTO { get; set; }
         public string RAZON_SOCIAL { get; set; }
         public string GLOSA { get; set; }
+        [Required]//NOT NULL
         public double MONTO_LINEA { get; set; }
 
-        //Relacion con el padre
+        //Relacion
         public virtual Rendicion Rendicion { get; set; }
-        public virtual List<MotivoGasto> MotivoGasto { get; set; }
+        public virtual MotivoGasto MotivoGasto { get; set; }
     }
 }

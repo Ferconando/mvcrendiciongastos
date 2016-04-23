@@ -48,14 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201604161625470_ConfiguracionInicial.cs" />
-    <Compile Include="Migrations\201604161625470_ConfiguracionInicial.Designer.cs">
-      <DependentUpon>201604161625470_ConfiguracionInicial.cs</DependentUpon>
+    <Compile Include="Migrations\201604231530101_ConfiguracionInicial.cs" />
+    <Compile Include="Migrations\201604231530101_ConfiguracionInicial.Designer.cs">
+      <DependentUpon>201604231530101_ConfiguracionInicial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604231622349_ConfiguracionInicialICollection.cs" />
+    <Compile Include="Migrations\201604231622349_ConfiguracionInicialICollection.Designer.cs">
+      <DependentUpon>201604231622349_ConfiguracionInicialICollection.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
-    <Compile Include="MotivoGasto.cs" />
-    <Compile Include="MotivoGasto_2.cs" />
+    <Compile Include="MotivoGastoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -69,8 +72,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604161625470_ConfiguracionInicial.resx">
-      <DependentUpon>201604161625470_ConfiguracionInicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201604231530101_ConfiguracionInicial.resx">
+      <DependentUpon>201604231530101_ConfiguracionInicial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604231622349_ConfiguracionInicialICollection.resx">
+      <DependentUpon>201604231622349_ConfiguracionInicialICollection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

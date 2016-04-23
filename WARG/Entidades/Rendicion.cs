@@ -1,4 +1,4 @@
-﻿using System;
+﻿            using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,10 +12,7 @@ namespace Entidades
     {
         [Key]
         [Required]//NOT NULL
-        public int RendicionID { get; set; }
-        //Llave Foranea
-        [Required]//NOT NULL
-        public int NumeroPLanillaID { get; set; }
+        public int RendicionID { get; set; }                
         //[MaxLength(50)]
         [Required]//NOT NULL
         public string FICHA_EMPLEADO { get; set; }
@@ -23,8 +20,7 @@ namespace Entidades
         public DateTime FECHA_RENDICION_INI { get; set; }
         [Required]//NOT NULL
         public DateTime FECHA_RENDICION_FIN { get; set; }
-        //Llave Foranea       
-        [Required]//NOT NULL
+               
         public double FONDO_INICIAL { get; set; }
         [Required]//NOT NULL
         public double TOTAL_GASTADO { get; set; }
@@ -35,14 +31,11 @@ namespace Entidades
         [Required]//NOT NULL
         public DateTime FECHA_CREACION { get; set; }
         [Required]//NOT NULL
-        public string GLOSA_GASTOS { get; set; }
-        [Required]//NOT NULL
-        public string GLOSA_MOVILIDAD { get; set; }
-        [Required]//NOT NULL
-        public string PERIODO { get; set; }
+        public string GLOSA_GASTOS { get; set; }       
+        
                 
-        // Creo el arreglo de Rendicion Detalle y Motivo Gasto
-        public virtual List<RendicionDetalle> RendicionDetalle { get; set; }        
+        // Creo el arreglo de Rendicion Detalle
+        public virtual ICollection<RendicionDetalle> RendicionDetalle { get; set; }        
        
     }
 }

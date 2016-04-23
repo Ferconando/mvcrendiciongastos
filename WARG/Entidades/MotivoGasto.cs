@@ -12,12 +12,12 @@ namespace Entidades
     {
         [Key]
         [Required]//NOT NULL
-        public int idMotivo { get; set; }        
+        public int MotivoID { get; set; }
         [Required]//NOT NULL
-        public int Motivo { get; set; }
+        public string Motivo { get; set; }
 
-        //Relacion con el padre
-        public virtual RendicionDetalle RendicionDetalle { get; set; }
+        //Relacion
+        public virtual ICollection<RendicionDetalle> RendicionDetalle { get; set; }
 
     }
 }

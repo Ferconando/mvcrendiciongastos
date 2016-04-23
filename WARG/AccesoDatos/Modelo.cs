@@ -17,7 +17,7 @@ namespace AccesoDatos
 
         public virtual DbSet<Rendicion> Rendiciones { get; set; }
         public virtual DbSet<RendicionDetalle> RendicioneDetalle { get; set; }
-        public virtual DbSet<MotivoGasto> MotivoGasto { get; set; }
+        public virtual DbSet<MotivoGasto> MotivoGastos { get; set; }
         
 
         //Cambiando convension de nombres de tablas a singular en EF
