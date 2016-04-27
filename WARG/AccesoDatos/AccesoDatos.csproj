@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201604231622349_ConfiguracionInicialICollection.Designer.cs">
       <DependentUpon>201604231622349_ConfiguracionInicialICollection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604242034305_CambioBaseRoles.cs" />
+    <Compile Include="Migrations\201604242034305_CambioBaseRoles.Designer.cs">
+      <DependentUpon>201604242034305_CambioBaseRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="MotivoGastoDAO.cs" />
@@ -77,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604231622349_ConfiguracionInicialICollection.resx">
       <DependentUpon>201604231622349_ConfiguracionInicialICollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604242034305_CambioBaseRoles.resx">
+      <DependentUpon>201604242034305_CambioBaseRoles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
