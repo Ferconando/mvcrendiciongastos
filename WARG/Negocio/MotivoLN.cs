@@ -17,7 +17,7 @@ namespace Negocio
             return motivodao.Listar();
         }
 
-        public int Insertar(MotivoGasto motivo)
+        public bool Insertar(MotivoGasto motivo)
         {
             return motivodao.Insertar(motivo);
         }

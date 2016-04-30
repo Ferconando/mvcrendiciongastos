@@ -30,10 +30,7 @@ namespace AccesoDatos
         }
 
         public bool Actualizar(MotivoGasto motivo)
-        {
-            //Debido a que el producto fue creado fuera del 
-            //contexto actual, es necesario indicarle a EF
-            //que lo agregue al contexto
+        {            
             context.MotivoGastos.Attach(motivo);
             context.Entry(motivo).State = EntityState.Modified;
             return (context.SaveChanges() > 0);
