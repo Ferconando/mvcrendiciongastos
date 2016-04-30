@@ -31,6 +31,8 @@ namespace WARG.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<Entidades.MotivoGasto> MotivoGastoes { get; set; }
+
         //public System.Data.Entity.DbSet<Entidades.MotivoGasto> MotivoGastoes { get; set; }
     }
 }

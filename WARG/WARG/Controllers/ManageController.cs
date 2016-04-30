@@ -10,7 +10,7 @@ using WARG.Models;
 
 namespace WARG.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
