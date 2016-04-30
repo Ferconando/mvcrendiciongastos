@@ -40,7 +40,7 @@ namespace WARG.Controllers
                     Name = collection["RoleName"]
                 });
                 context.SaveChanges();
-                ViewBag.ResultMessage = "Role created successfully !";
+                ViewBag.ResultMessage = "Role creado Exitosamente !";
                 return RedirectToAction("Index");
             }
             catch
@@ -102,7 +102,7 @@ namespace WARG.Controllers
             var account = new AccountController();
             account.UserManager.AddToRole(user.Id, RoleName);
             
-            ViewBag.ResultMessage = "Role created successfully !";
+            ViewBag.ResultMessage = "Role creado exitosamente !";
             
             // prepopulat roles for the view dropdown
             var list = context.Roles.OrderBy(r => r.Name).ToList().Select(rr => new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
