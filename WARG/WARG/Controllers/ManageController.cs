@@ -9,8 +9,7 @@ using Microsoft.Owin.Security;
 using WARG.Models;
 
 namespace WARG.Controllers
-{
-    [Authorize(Roles = "Admin")]
+{    
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;
