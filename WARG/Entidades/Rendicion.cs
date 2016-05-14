@@ -11,6 +11,7 @@ namespace Entidades
     public class Rendicion
     {
         [Key]
+        public int Id { get; set; }
         [Required]//NOT NULL
         public int RendicionID { get; set; }                
         //[MaxLength(50)]
