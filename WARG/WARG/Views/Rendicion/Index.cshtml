@@ -1,0 +1,181 @@
+﻿@model WARG.RendicionViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <div class="container-fluid">
+        <div class="row">
+            <h2>Rendición de Gastos </h2>
+        </div>
+@using (@Html.BeginForm("Grabar", "Rendicion", FormMethod.Post, new { @id = "frm-example" }))
+    {
+        <div class="row">
+            <div class="form-group col-md-2" style="font-size: 18px; font-weight: bold; color: #00539f; ">
+                @ViewBag.Mensaje
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label class="control-label">PK_RENDICION:</label>
+            </div>
+            <div class="form-group col-md-3">
+                @Html.HiddenFor(u => u.PK_RENDICION, new { type = "input", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label class="control-label">ATRIBUTO1_CABECERA:</label>
+            </div>
+            <div class="form-group col-md-3">
+                @Html.HiddenFor(u => u.ATRIBUTO1_CABECERA, new { type = "input", @class = "form-control" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label class="control-label">ATRIBUTO2_CABECERA:</label>
+            </div>
+            <div class="form-group col-md-3">
+                @Html.HiddenFor(u => u.ATRIBUTO2_CABECERA, new { type = "input", @class = "form-control" })
+            </div>
+        </div>
+
+    
+     <hr />
+        <div class="row">
+            <div class="form-group col-md-3">
+                <button type="submit" class="btn btn-success">GRABAR RENDICION</button>
+            </div>
+        </div>
+    }
+        <hr />
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label class="control-label">PK_DETALLE:</label>
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-control" id="PK_DETALLE" name="PK_DETALLE" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label class="control-label">ATRIBUTO1_DETALLE:</label>
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-control" id="ATRIBUTO1_DETALLE" name="ATRIBUTO1_DETALLE" value="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <label class="control-label">ATRIBUTO2_DETALLE:</label>
+            </div>
+            <div class="form-group col-md-3">
+                <input class="form-control" id="ATRIBUTO2_DETALLE" name="ATRIBUTO2_DETALLE" value="">
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group col-md-3">
+                <button class="btn btn-primary" onclick="Agregar(this)">AGREGAR DETALLE</button>
+            </div>
+        </div>
+
+        <div id="example_wrapper" class="dataTables_wrapper dt-jqueryui">
+            <table id="example" class="table table-bordered" cellspacing="0" role="grid" aria-describedby="example_info" style="width: 100%;">
+                <thead>
+                    <tr role="row">
+
+                    
+                        <th>PK_DETALLE</th>
+                        <th>ATRIBUTO1_DETALLE</th>
+                        <th>ATRIBUTO2_DETALLE</th>
+
+                    </tr>
+                </thead>
+                <tbody style="font-size:smaller">
+                    </tbody>
+</table>
+
+        </div>
+    </div>
+
+
+<script>
+
+  
+    $(document).ready(function () {
+
+         $('#example').DataTable({
+       
+            language: {
+                "sProcessing": "Procesando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "sEmptyTable": "Ningún dato disponible en esta tabla",
+                "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast": "Último",
+                    "sNext": "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+            }
+       ,
+            columns: [
+            { "data": "PK_DETALLE" },
+            { "data": "ATRIBUTO1_DETALLE" },
+            { "data": "ATRIBUTO2_DETALLE" }
+            ]
+
+
+
+        });
+
+        
+        $('#frm-example').on('submit', function (e) {
+
+
+            var table = $('#example').DataTable();
+            var keys = [];
+            var data = table.rows().data();
+            data.each(function (value, index) {
+                var jsonStr = JSON.stringify(value);
+                keys.push(jsonStr);
+            });
+
+            $.ajax({
+                url: '@Url.Action("SessionJSON", "Rendicion")',
+                type: 'POST',
+                data: { id: keys.join() },
+                success: function (result) {
+                }
+            });
+
+        });
+
+    });
+
+    function Agregar(element) {
+        var table = $('#example').DataTable();
+        table.row.add({
+            "PK_DETALLE": document.getElementById("PK_DETALLE").value,
+            "ATRIBUTO1_DETALLE": document.getElementById("ATRIBUTO1_DETALLE").value,
+            "ATRIBUTO2_DETALLE": document.getElementById("ATRIBUTO2_DETALLE").value
+        }).draw();
+    }
+</script>
+
+
+
