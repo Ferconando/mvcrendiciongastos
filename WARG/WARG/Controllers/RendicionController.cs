@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Entidades;
 //using WARG.Models;
 using Negocio;
+using AccesoDatos;
 
 namespace WARG.Controllers
 {    
@@ -13,7 +14,7 @@ namespace WARG.Controllers
     public class RendicionController : Controller
     {        
         //private ApplicationDbContext db = new ApplicationDbContext();
-        //private RendicionContext db = new RendicionContext();
+        private RendicionContext db = new RendicionContext();
        
         //
         // GET: /Rendicion/
@@ -50,20 +51,22 @@ namespace WARG.Controllers
                 cabecera.FONDO_INICIAL = 1000;
                 cabecera.GLOSA_GASTOS = "Prueba1";
                 cabecera.TOTAL_GASTADO = 1000;
-                RendicionDetalle Rendiciondetalle = new RendicionDetalle();
+                RendicionDetalle Detalle = new RendicionDetalle();
                 cabecera.RendicionDetalle = lista;
                 //cabecera.DETALLERENDICION = lista;
-                Rendiciondetalle.FECHA_GASTO = DateTime.Today;
-                Rendiciondetalle.GLOSA = "Arroz";
-                Rendiciondetalle.MONTO_LINEA = 100;
-                Rendiciondetalle.NUMERO_DOCTO = "123456789";
-                Rendiciondetalle.RAZON_SOCIAL = "Los Gastos S.A";
-                Rendiciondetalle.SECUENCIA = 1;
-                Rendiciondetalle.TIPO_DOCTO = "Boleta";
-                Rendiciondetalle.RendicionID = 001000010;
-                Rendiciondetalle.MotivoID = 1;
+                Detalle.FECHA_GASTO = DateTime.Today;
+                Detalle.GLOSA = "Arroz";
+                Detalle.MONTO_LINEA = 100;
+                Detalle.NUMERO_DOCTO = "123456789";
+                Detalle.RAZON_SOCIAL = "Los Gastos S.A";
+                Detalle.SECUENCIA = 1;
+                Detalle.TIPO_DOCTO = "Boleta";
+                Detalle.RendicionID = 001000010;
+                Detalle.MotivoID = 1;
+                //Detalle.MotivoGasto = 1;
 
-                
+                cabecera.RendicionDetalle.Add(Detalle);
+                db.SaveChanges();
 
                 if (ModelState.IsValid)
                 {       
