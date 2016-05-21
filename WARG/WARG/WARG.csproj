@@ -252,6 +252,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
+      <Project>{258f4207-db2d-4ea4-bba8-3f3bb901c054}</Project>
+      <Name>AccesoDatos</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
       <Project>{87a444cf-b8e5-4c98-9961-830127f979dc}</Project>
       <Name>Entidades</Name>
