@@ -7,13 +7,13 @@ namespace AccesoDatos.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CambioBaseRoles : IMigrationMetadata
+    public sealed partial class ConfiguracionInicial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CambioBaseRoles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ConfiguracionInicial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201604242034305_CambioBaseRoles"; }
+            get { return "201605220447543_ConfiguracionInicial"; }
         }
         
         string IMigrationMetadata.Source

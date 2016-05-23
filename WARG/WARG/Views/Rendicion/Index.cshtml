@@ -1,4 +1,4 @@
-﻿@model WARG.RendicionViewModel
+﻿@model Entidades.RendicionDetalle
 
 @{
     ViewBag.Title = "Index";
@@ -15,62 +15,153 @@
                 @ViewBag.Mensaje
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label class="control-label">PK_RENDICION:</label>
+        <div class="row ">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">Id:</label>
             </div>
-            <div class="form-group col-md-3">
-                @Html.HiddenFor(u => u.PK_RENDICION, new { type = "input", @class = "form-control" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label class="control-label">ATRIBUTO1_CABECERA:</label>
-            </div>
-            <div class="form-group col-md-3">
-                @Html.HiddenFor(u => u.ATRIBUTO1_CABECERA, new { type = "input", @class = "form-control" })
+            <div class="form-group col-md-3 top-buffer">
+                <input class="form-control input-sm" id="PK_CABECERA" name="PK_CABECERA" value="">
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label class="control-label">ATRIBUTO2_CABECERA:</label>
-            </div>
-            <div class="form-group col-md-3">
-                @Html.HiddenFor(u => u.ATRIBUTO2_CABECERA, new { type = "input", @class = "form-control" })
-            </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Empleado:</label>
         </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input class="form-control input-sm" id="empleado" name="empleado" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Fecha Inicial:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input type="date" class="form-control input-sm" id="fecha_inicial" name="fecha_inicial" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Fecha Fin:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input type="date" class="form-control input-sm" id="fecha_final" name="fecha_final" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Fondo Inicial:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input class="form-control input-sm" id="fondo_inicial" name="fondo_inicial" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Total Gastado:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input class="form-control input-sm" id="total_gastado" name="total_gastado" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Estado:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input class="form-control input-sm" id="estado" name="estado" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Fecha Cambio Estado:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input type="date" class="form-control input-sm" id="fecha_cambioestado" name="fecha_cambioestado" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Fecha Creación:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input type="date" class="form-control input-sm" id="fecha_creacion" name="fecha_creacion" value="">
+        </div>
+    </div>
+    <div class="row top-buffer">
+        <div class="form-group col-md-2 top-buffer">
+            <label class="control-label input-sm">Glosa Gastos:</label>
+        </div>
+        <div class="form-group col-md-3 top-buffer">
+            <input class="form-control input-sm" id="glosa_gastos" name="glosa_gastos" value="">
+        </div>
+    </div>    
 
     
      <hr />
-        <div class="row">
+        <div class="row top-buffer">
             <div class="form-group col-md-3">
                 <button type="submit" class="btn btn-success">GRABAR RENDICION</button>
             </div>
         </div>
     }
         <hr />
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label class="control-label">PK_DETALLE:</label>
+        <div class="row top-buffer">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">PK_DETALLE:</label>
             </div>
-            <div class="form-group col-md-3">
-                <input class="form-control" id="PK_DETALLE" name="PK_DETALLE" value="">
+            <div class="form-group col-md-3 top-buffer">
+                <input class="form-control input-sm" id="PK_DETALLE" name="PK_DETALLE" value="">
+            </div>
+        </div>  
+        <div class="row top-buffer">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">Fecha Gasto:</label>
+            </div>
+            <div class="form-group col-md-3 top-buffer">
+                <input type="date" class="form-control input-sm" id="fecha_gasto" name="fecha_gasto" value="">
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label class="control-label">ATRIBUTO1_DETALLE:</label>
+        <div class="row top-buffer">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">Tipo Documento:</label>
             </div>
-            <div class="form-group col-md-3">
-                <input class="form-control" id="ATRIBUTO1_DETALLE" name="ATRIBUTO1_DETALLE" value="">
+            <div class="form-group col-md-3 top-buffer">
+                <input class="form-control input-sm" id="tipo_documento" name="tipo_documento" value="">
             </div>
         </div>
-        <div class="row">
-            <div class="form-group col-md-2">
-                <label class="control-label">ATRIBUTO2_DETALLE:</label>
+        <div class="row top-buffer">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">Número Documento:</label>
             </div>
-            <div class="form-group col-md-3">
-                <input class="form-control" id="ATRIBUTO2_DETALLE" name="ATRIBUTO2_DETALLE" value="">
+            <div class="form-group col-md-3 top-buffer">
+                <input class="form-control input-sm" id="numero_documento" name="numero_documento" value="">
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">Razón Social:</label>
+            </div>
+            <div class="form-group col-md-3 top-buffer">
+                <input class="form-control input-sm" id="razon_social" name="razon_social" value="">
+            </div>
+        </div>
+        <div class="row top-buffer">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">Monto Linea:</label>
+            </div>
+            <div class="form-group col-md-3 top-buffer">
+                <input class="form-control input-sm" s id="monto_linea" name="monto_linea" value="">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotivoGasto, htmlAttributes: new { @class = "control-label col-md-2 top-buffer" })
+            <div class="col-md-10">
+                @*@Html.EditorFor(model => model.CategoriaID, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.MotivoID,
+                                new SelectList(ViewBag.Categorias, "MotivoID", "Motivo"),
+                                "Seleccione el Motivo --", new { @class = "form-control top-buffer" })
+                @Html.ValidationMessageFor(model => model.MotivoID, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -88,9 +179,12 @@
 
                     
                         <th>PK_DETALLE</th>
-                        <th>ATRIBUTO1_DETALLE</th>
-                        <th>ATRIBUTO2_DETALLE</th>
-
+                        <th>Motivo Gasto</th>
+                        <th>Fecha Gasto</th>
+                        <th>Tipo Documento</th>
+                        <th>Número Documento</th>
+                        <th>Razón Social</th>
+                        <th>Monto Linea</th>
                     </tr>
                 </thead>
                 <tbody style="font-size:smaller">
@@ -105,6 +199,10 @@
 
   
     $(document).ready(function () {
+
+        //$('#fecha_gasto').datepicker({
+        //    format: "dd/mm/yyyy"
+        //});
 
          $('#example').DataTable({
        
@@ -135,8 +233,12 @@
        ,
             columns: [
             { "data": "PK_DETALLE" },
-            { "data": "ATRIBUTO1_DETALLE" },
-            { "data": "ATRIBUTO2_DETALLE" }
+            { "data": "MotivoID" },
+            { "data": "fecha_gasto" },
+            { "data": "tipo_documento" },
+            { "data": "numero_documento" },
+            { "data": "razon_social" },
+            { "data": "monto_linea" }
             ]
 
 
@@ -167,12 +269,18 @@
 
     });
 
+
+
     function Agregar(element) {
         var table = $('#example').DataTable();
         table.row.add({
             "PK_DETALLE": document.getElementById("PK_DETALLE").value,
-            "ATRIBUTO1_DETALLE": document.getElementById("ATRIBUTO1_DETALLE").value,
-            "ATRIBUTO2_DETALLE": document.getElementById("ATRIBUTO2_DETALLE").value
+            "MotivoID": document.getElementById("MotivoID").value,
+            "fecha_gasto": document.getElementById("fecha_gasto").value,
+            "tipo_documento": document.getElementById("tipo_documento").value,
+            "numero_documento": document.getElementById("numero_documento").value,
+            "razon_social": document.getElementById("razon_social").value,
+            "monto_linea": document.getElementById("monto_linea").value
         }).draw();
     }
 </script>

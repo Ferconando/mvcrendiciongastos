@@ -14,7 +14,7 @@ namespace Entidades
         public int RendicionDetalleID { get; set; }
         //[MaxLength(100)]
         [Required]//NOT NULL
-        public int RendicionID { get; set; }
+        public int NumeroRendicion { get; set; }
         [Required]//NOT NULL
         public int MotivoID { get; set; }
         //[MaxLength(100)]

@@ -13,7 +13,7 @@ namespace Entidades
         [Key]
         public int Id { get; set; }
         [Required]//NOT NULL
-        public int RendicionID { get; set; }                
+        public int NumeroRendicion { get; set; }                
         //[MaxLength(50)]
         [Required]//NOT NULL
         public string FICHA_EMPLEADO { get; set; }

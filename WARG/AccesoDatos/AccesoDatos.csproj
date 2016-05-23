@@ -48,22 +48,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201604231530101_ConfiguracionInicial.cs" />
-    <Compile Include="Migrations\201604231530101_ConfiguracionInicial.Designer.cs">
-      <DependentUpon>201604231530101_ConfiguracionInicial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604231622349_ConfiguracionInicialICollection.cs" />
-    <Compile Include="Migrations\201604231622349_ConfiguracionInicialICollection.Designer.cs">
-      <DependentUpon>201604231622349_ConfiguracionInicialICollection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604242034305_CambioBaseRoles.cs" />
-    <Compile Include="Migrations\201604242034305_CambioBaseRoles.Designer.cs">
-      <DependentUpon>201604242034305_CambioBaseRoles.cs</DependentUpon>
+    <Compile Include="Migrations\201605220447543_ConfiguracionInicial.cs" />
+    <Compile Include="Migrations\201605220447543_ConfiguracionInicial.Designer.cs">
+      <DependentUpon>201605220447543_ConfiguracionInicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="MotivoGastoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RendicionDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entidades\Entidades.csproj">
@@ -76,14 +69,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201604231530101_ConfiguracionInicial.resx">
-      <DependentUpon>201604231530101_ConfiguracionInicial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604231622349_ConfiguracionInicialICollection.resx">
-      <DependentUpon>201604231622349_ConfiguracionInicialICollection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604242034305_CambioBaseRoles.resx">
-      <DependentUpon>201604242034305_CambioBaseRoles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605220447543_ConfiguracionInicial.resx">
+      <DependentUpon>201605220447543_ConfiguracionInicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

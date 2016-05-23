@@ -42,6 +42,8 @@ video {
   display: inline-block;
 }
 
+.top-buffer { margin-bottom: 0px !important; }
+
 audio:not([controls]) {
   display: none;
   height: 0;
