@@ -10,6 +10,7 @@ using Entidades;
 
 namespace WARG.Models
 {
+    [Authorize]
     public class MotivoGastosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
