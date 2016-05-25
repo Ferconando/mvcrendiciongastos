@@ -79,6 +79,9 @@ namespace WARG.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        public string NombreCompleto { get; set; }
+        public string CargoEmpleado { get; set; }
     }
 
     public class ResetPasswordViewModel

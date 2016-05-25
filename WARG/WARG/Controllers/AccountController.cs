@@ -9,6 +9,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WARG.Models;
+using Entidades;
+using Negocio;
 
 namespace WARG.Controllers
 {
@@ -164,6 +166,20 @@ namespace WARG.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+
+
+                    string cargo = model.CargoEmpleado;
+                    string nombre = model.NombreCompleto;
+
+                    UsuarioHortus usuario = new UsuarioHortus();
+                    usuario.CARGO = model.CargoEmpleado;
+                    usuario.EMAIL = model.Email;
+                    usuario.NOMBRE = model.NombreCompleto;
+
+                    var usuarioLN = new UsuarioLN();
+                    usuarioLN.Insertar(usuario);
+
+                    //BL INSERTAR.usuario(asd);
 
                     return RedirectToAction("Index", "Home");
                 }

@@ -39,7 +39,7 @@ namespace WARG.Controllers
                 //Producto que espera el controlador como parametro
                 //cabecera.RendicionDetalle = lista;
                 var lista = (List<RendicionDetalle>)Session["SelectListP"];
-                model.RendicionDetalle(lista);
+                model.RendicionDetalle=lista;
                 var rendicionLN = new RendicionLN();
                 //model.RendicionDetalle(lista);
                 rendicionLN.Insertar(model);

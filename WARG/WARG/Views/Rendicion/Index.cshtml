@@ -1,7 +1,7 @@
 ﻿@model Entidades.RendicionDetalle
-
+@using Microsoft.AspNet.Identity
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Index";    
 }
 
     <div class="container-fluid">
@@ -20,7 +20,7 @@
                 <label class="control-label input-sm">Id:</label>
             </div>
             <div class="form-group col-md-3 top-buffer">
-                <input class="form-control input-sm" id="PK_CABECERA" name="PK_CABECERA" value="">
+                <input class="form-control input-sm" id="NumeroRendicion" name="NumeroRendicion" value="">
             </div>
         </div>
     <div class="row top-buffer">
@@ -28,7 +28,7 @@
             <label class="control-label input-sm">Empleado:</label>
         </div>
         <div class="form-group col-md-3 top-buffer">
-            <input class="form-control input-sm" id="empleado" name="empleado" value="">
+            <input class="form-control input-sm" id="FICHA_EMPLEADO" name="FICHA_EMPLEADO" value=@User.Identity.GetUserName()>
         </div>
     </div>
     <div class="row top-buffer">
@@ -36,7 +36,7 @@
             <label class="control-label input-sm">Fecha Inicial:</label>
         </div>
         <div class="form-group col-md-3 top-buffer">
-            <input type="date" class="form-control input-sm" id="fecha_inicial" name="fecha_inicial" value="">
+            <input type="date" class="form-control input-sm" id="FECHA_RENDICION_INI" name="FECHA_RENDICION_INI" value="">
         </div>
     </div>
     <div class="row top-buffer">
@@ -44,7 +44,7 @@
             <label class="control-label input-sm">Fecha Fin:</label>
         </div>
         <div class="form-group col-md-3 top-buffer">
-            <input type="date" class="form-control input-sm" id="fecha_final" name="fecha_final" value="">
+            <input type="date" class="form-control input-sm" id="FECHA_RENDICION_FIN" name="FECHA_RENDICION_FIN" value="">
         </div>
     </div>
     <div class="row top-buffer">
@@ -52,7 +52,7 @@
             <label class="control-label input-sm">Fondo Inicial:</label>
         </div>
         <div class="form-group col-md-3 top-buffer">
-            <input class="form-control input-sm" id="fondo_inicial" name="fondo_inicial" value="">
+            <input class="form-control input-sm" id="FONDO_INICIAL" name="FONDO_INICIAL" value="">
         </div>
     </div>
     <div class="row top-buffer">
@@ -60,31 +60,7 @@
             <label class="control-label input-sm">Total Gastado:</label>
         </div>
         <div class="form-group col-md-3 top-buffer">
-            <input class="form-control input-sm" id="total_gastado" name="total_gastado" value="">
-        </div>
-    </div>
-    <div class="row top-buffer">
-        <div class="form-group col-md-2 top-buffer">
-            <label class="control-label input-sm">Estado:</label>
-        </div>
-        <div class="form-group col-md-3 top-buffer">
-            <input class="form-control input-sm" id="estado" name="estado" value="">
-        </div>
-    </div>
-    <div class="row top-buffer">
-        <div class="form-group col-md-2 top-buffer">
-            <label class="control-label input-sm">Fecha Cambio Estado:</label>
-        </div>
-        <div class="form-group col-md-3 top-buffer">
-            <input type="date" class="form-control input-sm" id="fecha_cambioestado" name="fecha_cambioestado" value="">
-        </div>
-    </div>
-    <div class="row top-buffer">
-        <div class="form-group col-md-2 top-buffer">
-            <label class="control-label input-sm">Fecha Creación:</label>
-        </div>
-        <div class="form-group col-md-3 top-buffer">
-            <input type="date" class="form-control input-sm" id="fecha_creacion" name="fecha_creacion" value="">
+            <input class="form-control input-sm" id="TOTAL_GASTADO" name="TOTAL_GASTADO" value="">
         </div>
     </div>
     <div class="row top-buffer">
@@ -92,7 +68,7 @@
             <label class="control-label input-sm">Glosa Gastos:</label>
         </div>
         <div class="form-group col-md-3 top-buffer">
-            <input class="form-control input-sm" id="glosa_gastos" name="glosa_gastos" value="">
+            <input class="form-control input-sm" id="GLOSA_GASTOS" name="GLOSA_GASTOS" value="">
         </div>
     </div>    
 
@@ -110,7 +86,7 @@
                 <label class="control-label input-sm">PK_DETALLE:</label>
             </div>
             <div class="form-group col-md-3 top-buffer">
-                <input class="form-control input-sm" id="PK_DETALLE" name="PK_DETALLE" value="">
+                <input class="form-control input-sm" id="NumeroRendicion" name="NumeroRendicion" value="">
             </div>
         </div>  
         <div class="row top-buffer">
@@ -126,7 +102,7 @@
                 <label class="control-label input-sm">Tipo Documento:</label>
             </div>
             <div class="form-group col-md-3 top-buffer">
-                <input class="form-control input-sm" id="tipo_documento" name="tipo_documento" value="">
+                <input class="form-control input-sm" id="tipo_docto" name="tipo_docto" value="">
             </div>
         </div>
         <div class="row top-buffer">
@@ -134,7 +110,7 @@
                 <label class="control-label input-sm">Número Documento:</label>
             </div>
             <div class="form-group col-md-3 top-buffer">
-                <input class="form-control input-sm" id="numero_documento" name="numero_documento" value="">
+                <input class="form-control input-sm" id="numero_docto" name="numero_docto" value="">
             </div>
         </div>
         <div class="row top-buffer">
@@ -232,11 +208,11 @@
             }
        ,
             columns: [
-            { "data": "PK_DETALLE" },
+            { "data": "NumeroRendicion" },
             { "data": "MotivoID" },
             { "data": "fecha_gasto" },
-            { "data": "tipo_documento" },
-            { "data": "numero_documento" },
+            { "data": "tipo_docto" },
+            { "data": "numero_docto" },
             { "data": "razon_social" },
             { "data": "monto_linea" }
             ]
@@ -274,11 +250,11 @@
     function Agregar(element) {
         var table = $('#example').DataTable();
         table.row.add({
-            "PK_DETALLE": document.getElementById("PK_DETALLE").value,
+            "NumeroRendicion": document.getElementById("NumeroRendicion").value,
             "MotivoID": document.getElementById("MotivoID").value,
             "fecha_gasto": document.getElementById("fecha_gasto").value,
-            "tipo_documento": document.getElementById("tipo_documento").value,
-            "numero_documento": document.getElementById("numero_documento").value,
+            "tipo_docto": document.getElementById("tipo_docto").value,
+            "numero_docto": document.getElementById("numero_docto").value,
             "razon_social": document.getElementById("razon_social").value,
             "monto_linea": document.getElementById("monto_linea").value
         }).draw();
