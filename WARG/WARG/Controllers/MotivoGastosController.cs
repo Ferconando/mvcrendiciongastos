@@ -7,32 +7,38 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Entidades;
+using Negocio;
 
 namespace WARG.Models
 {
-    [Authorize]
+   // [Authorize]
     public class MotivoGastosController : Controller
-    {
-        private ApplicationDbContext db = new ApplicationDbContext();
+    {    
 
         // GET: MotivoGastos
         public ActionResult Index()
         {
-            return View(db.MotivoGastoes.ToList());
+            var motivoLN = new MotivoLN();
+            return View(motivoLN.Listar());
         }
                 
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
+        public ActionResult Details(int id)
+        {            
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var motivoLN = new MotivoLN();
+                var motivo = motivoLN.Obtener(id);
+                return View(motivo);
             }
-            MotivoGasto motivoGasto = db.MotivoGastoes.Find(id);
-            if (motivoGasto == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
             }
-            return View(motivoGasto);
+
         }
 
         // GET: MotivoGastos/Create
@@ -44,75 +50,113 @@ namespace WARG.Models
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MotivoID,Motivo")] MotivoGasto motivoGasto)
-        {
-            if (ModelState.IsValid)
+        {            
+            try
             {
-                db.MotivoGastoes.Add(motivoGasto);
-                db.SaveChanges();
+                var motivoLN = new MotivoLN();
+                motivoLN.Insertar(motivoGasto);               
                 return RedirectToAction("Index");
             }
+            catch (Exception ex)
+            {
 
-            return View(motivoGasto);
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
+            }            
         }
                 
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
+        public ActionResult Edit(int id)
+        {            
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var motivoLN = new MotivoLN();
+                var motivo = motivoLN.Obtener(id);               
+                return View(motivo);
             }
-            MotivoGasto motivoGasto = db.MotivoGastoes.Find(id);
-            if (motivoGasto == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
             }
-            return View(motivoGasto);
+
         }
                 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MotivoID,Motivo")] MotivoGasto motivoGasto)
-        {
-            if (ModelState.IsValid)
+        {     
+            try
             {
-                db.Entry(motivoGasto).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var motivoLN = new MotivoLN();
+                if (motivoLN.Actualizar(motivoGasto))
+                    return RedirectToAction("Index");
+                else
+                {
+                    ViewBag.Categorias = motivoLN.Listar();// ListarCategorias();
+                    return View(motivoGasto);
+                }
             }
-            return View(motivoGasto);
+            catch (Exception ex)
+            {
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
+            }
         }
                 
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
-            if (id == null)
+            try
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var motivoLN = new MotivoLN();                
+                var motivo = motivoLN.Obtener(id);                
+                return View(motivo);
+
             }
-            MotivoGasto motivoGasto = db.MotivoGastoes.Find(id);
-            if (motivoGasto == null)
+            catch (Exception ex)
             {
-                return HttpNotFound();
+
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
             }
-            return View(motivoGasto);
         }
                 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
-        {
-            MotivoGasto motivoGasto = db.MotivoGastoes.Find(id);
-            db.MotivoGastoes.Remove(motivoGasto);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+        {            
+            try
+            {         
+                var motivoLN = new MotivoLN();
+                if (!motivoLN.Eliminar(id))
+
+                    throw new Exception("Error al eliminar el Motivo");
+                return RedirectToAction("Index");
+
+
+            }
+            catch (Exception ex)
+            {
+
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
+            }
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+
     }
 }

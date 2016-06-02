@@ -1,5 +1,6 @@
 namespace AccesoDatos.Migrations
 {
+    using Entidades;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -25,6 +26,12 @@ namespace AccesoDatos.Migrations
             //      new Person { FullName = "Brice Lambson" },
             //      new Person { FullName = "Rowan Miller" }
             //    );
+            context.MotivoGastos.AddOrUpdate(
+                p=> p.Motivo,
+                new MotivoGasto { Motivo="Desayuno"},
+                new MotivoGasto { Motivo="Almuerzo"},
+                new MotivoGasto { Motivo="Cena"}
+                );
             //
         }
     }

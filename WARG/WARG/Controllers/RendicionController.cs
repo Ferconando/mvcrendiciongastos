@@ -57,47 +57,7 @@ namespace WARG.Controllers
             //}
 
 
-            //var rendicionLN = new RendicionLN();
-            //string fecha_actual = Hoy.ToString("dd-MM-yyyy"); 
             
-            //RendicionCabecera cabecera = new RendicionCabecera();               
-
-
-            //RendicionDetalle Detalle = new RendicionDetalle();
-            //cabecera.RendicionDetalle = lista;
-            //cabecera.DETALLERENDICION = lista;                   
-
-            //Rendicion cabecera = new Rendicion();
-            //cabecera.PK_RENDICION = model.PK_RENDICION;
-            //cabecera.ATRIBUTO1_CABECERA = model.ATRIBUTO1_CABECERA;
-            //cabecera.ATRIBUTO2_CABECERA = model.ATRIBUTO2_CABECERA;
-            //cabecera.NumeroRendicion = 001000010;
-            //cabecera.ESTADO_PLANILLA = "PENDIENTE";
-            //cabecera.FECHA_CAMBIO_ESTADO = DateTime.Today;
-            //cabecera.FECHA_CREACION = DateTime.Today;
-            //cabecera.FECHA_RENDICION_FIN = DateTime.Today;
-            //cabecera.FECHA_RENDICION_INI = DateTime.Today;
-            //cabecera.FICHA_EMPLEADO = "42085432";
-            //cabecera.FONDO_INICIAL = 1000;
-            //cabecera.GLOSA_GASTOS = "Prueba1";
-            //cabecera.TOTAL_GASTADO = 1000;
-            //db.Rendiciones.Add(cabecera);
-
-            //RendicionDetalle detalle = new RendicionDetalle();
-            //var lista = (List<RendicionDetalle>)Session["SelectListP"];
-            
-            //detalle.FECHA_GASTO = DateTime.Today;
-            //detalle.GLOSA = "Arroz";
-            //detalle.MONTO_LINEA = 100;
-            //detalle.NUMERO_DOCTO = "123456789";
-            //detalle.RAZON_SOCIAL = "Los Gastos S.A";
-            //detalle.SECUENCIA = 1;
-            //detalle.TIPO_DOCTO = "Boleta";
-            //detalle.NumeroRendicion = 001000010;
-            //detalle.MotivoID = 1;
-            //db.RendicioneDetalle.Add(lista);
-            //db.SaveChanges();
-
             //if (ModelState.IsValid)
             //{
             //    //db.MotivoGastoes.Add(Rendicion);                    
