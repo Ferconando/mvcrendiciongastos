@@ -18,18 +18,27 @@ namespace Negocio
             rendicion.ESTADO_PLANILLA = "PENDIENTE";
 
             rendicion.FECHA_CAMBIO_ESTADO = DateTime.Now;
-            rendicion.FECHA_CREACION = DateTime.Now;
-            //rendicion.FECHA_RENDICION_FIN = DateTime.Now;
-            //rendicion.FECHA_RENDICION_INI = DateTime.Now;
+            rendicion.FECHA_CREACION = DateTime.Now;            
 
             var i=1;
+            double montoTotal = 0;
             foreach (var obj in rendicion.RendicionDetalle)
             {
                 obj.FECHA_GASTO = DateTime.Now;
                 obj.SECUENCIA = i++;
+                montoTotal = montoTotal + obj.MONTO_LINEA;
             }
 
+            rendicion.TOTAL_GASTADO = montoTotal;
+
+            var valor = obtenerUltimaRendicion(rendicion.FICHA_EMPLEADO);
             return rendicionDAO.Insertar(rendicion);
+        }
+
+        private string obtenerUltimaRendicion(string p)
+        {
+           // throw new NotImplementedException();
+            return rendicionDAO.ObtenerRendicion(p);
         }
     }
 }

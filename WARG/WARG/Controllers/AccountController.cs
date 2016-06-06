@@ -175,6 +175,7 @@ namespace WARG.Controllers
                     usuario.CARGO = model.CargoEmpleado;
                     usuario.EMAIL = model.Email;
                     usuario.NOMBRE = model.NombreCompleto;
+                    usuario.Dni = model.Dni;
 
                     var usuarioLN = new UsuarioLN();
                     usuarioLN.Insertar(usuario);

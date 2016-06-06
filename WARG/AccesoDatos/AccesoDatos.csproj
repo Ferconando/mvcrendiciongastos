@@ -56,6 +56,10 @@
     <Compile Include="Migrations\201605250422025_AgregarUsuariosHortus.Designer.cs">
       <DependentUpon>201605250422025_AgregarUsuariosHortus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606041929071_AgregarDNIUsuariosHortus.cs" />
+    <Compile Include="Migrations\201606041929071_AgregarDNIUsuariosHortus.Designer.cs">
+      <DependentUpon>201606041929071_AgregarDNIUsuariosHortus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="MotivoGastoDAO.cs" />
@@ -80,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605250422025_AgregarUsuariosHortus.resx">
       <DependentUpon>201605250422025_AgregarUsuariosHortus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606041929071_AgregarDNIUsuariosHortus.resx">
+      <DependentUpon>201606041929071_AgregarDNIUsuariosHortus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
