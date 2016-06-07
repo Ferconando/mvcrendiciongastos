@@ -239,6 +239,7 @@
     <Content Include="Views\MotivoGastos\Edit.cshtml" />
     <Content Include="Views\MotivoGastos\Index.cshtml" />
     <Content Include="Views\Rendicion\Index.cshtml" />
+    <Content Include="Views\Rendicion\ListarRendicion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

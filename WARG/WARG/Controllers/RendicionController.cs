@@ -44,33 +44,7 @@ namespace WARG.Controllers
                 //model.RendicionDetalle(lista);
                 rendicionLN.Insertar(model);
                 return RedirectToAction("Index");
-
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    @ViewBag.DescripcionError = ex.Message;
-            //    @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
-            //    @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
-
-            //    return View("Error");
-            //}
-
-
-            
-            //if (ModelState.IsValid)
-            //{
-            //    //db.MotivoGastoes.Add(Rendicion);                    
-            //    //  db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-
-            //CABECERA-DETALLE lista para insertar con ADO, ENTITY,ETC.
-            //ModelState.Clear();
-            //TempData["Mensaje"] = "REGISTRO COMPLETADO!";
-            //return RedirectToAction("Index");
-
-
+           
         }
 
         public ActionResult SessionJSON(String id)
@@ -82,5 +56,32 @@ namespace WARG.Controllers
             Session["SelectListP"] = selectList;
             return View();
         }
+
+        // GET: Lista las rendiciones
+        public ActionResult ListarRendicion()
+        {
+            var rendicionLN = new RendicionLN();
+            return View(rendicionLN.Listar());
+        }
+
+        public ActionResult Edit(int id)
+        {
+            try
+            {
+                var rendicionLN = new RendicionLN();
+                var rendicion = rendicionLN.Obtener(id);
+                return View(rendicion);
+            }
+            catch (Exception ex)
+            {
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
+            }
+
+        }
+
     }
 }

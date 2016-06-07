@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Entidades.Rendicion>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "ListarRendicion";
+}
+
+<h2>ListarRendicion</h2>
+
+<p>
+    @Html.ActionLink("Nueva Rendición", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Rendicion @*@Html.DisplayNameFor(model => model.NumeroRendicion)*@
+        </th>
+        <th>
+            Empleado @*@Html.DisplayNameFor(model => model.FICHA_EMPLEADO)*@
+        </th>
+        <th>
+            Fecha Inicial @*@Html.DisplayNameFor(model => model.FECHA_RENDICION_INI)*@
+        </th>
+        <th>
+            Fecha Fin @*@Html.DisplayNameFor(model => model.FECHA_RENDICION_FIN)*@
+        </th>
+        <th>
+            Total Gastado @*@Html.DisplayNameFor(model => model.TOTAL_GASTADO)*@
+        </th>
+        <th>
+            Estado @*@Html.DisplayNameFor(model => model.ESTADO_PLANILLA)*@
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NumeroRendicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem =>item.FICHA_EMPLEADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.FECHA_RENDICION_INI, "{dd/MM/yyyy}")
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.FECHA_RENDICION_FIN, "{dd/MM/yyyy}")
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem=>item.TOTAL_GASTADO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem=>item.ESTADO_PLANILLA)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NumeroRendicion }) |
+            @Html.ActionLink("Details", "Details", new { id = item.NumeroRendicion }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.NumeroRendicion })
+        </td>
+    </tr>
+}
+
+</table>

@@ -26,22 +26,34 @@ namespace AccesoDatos
             if (context != null) context.Dispose();
         }
 
-        public string ObtenerRendicion(string p)
+        public int ObtenerRendicion(string p)
         {
-            // Extraemos el ObjectContext del DbContext (a partir de Entity Framework 4.1)
-            //var objectContext = ((IObjectContextAdapter)context).ObjectContext;
+            var query =
+             (from Rendicion in context.Rendiciones
+              where Rendicion.FICHA_EMPLEADO == p
+              orderby Rendicion.NumeroRendicion descending
+              select new
+              {
+                  NumeroRendicion = Rendicion.NumeroRendicion
+              }).FirstOrDefault();
 
-            // Ejecutamos una sentencia de Entity SQL que recupere todos los clientes
-            //string sqlQuery = "SELECT top(1) NumeroRendicion FROM Rendicion where FICHA_EMPLEADO=@p order by NumeroRendicion desc ";
-            //var result = context.Database.SqlQuery<Rendicion>(
-            //     "SELECT top(1) NumeroRendicion FROM Rendicion where FICHA_EMPLEADO=@P0 order by NumeroRendicion desc",
-            //p);
-            DbSqlQuery<Rendicion> data = context.Rendiciones.SqlQuery("SELECT top(1) NumeroRendicion FROM Rendicion where FICHA_EMPLEADO=(((System.Data.Entity.Infrastructure.DbRawSqlQuery<Entidades.Rendicion>)(data))._internalQuery)._parameters[0] order by NumeroRendicion desc", p);
-   
-            //var clientes = new ObjectQuery<Rendicion>(sqlQuery, objectContext);
-            return data.ToString();
-            //return context.Rendiciones.Where(
-            //    C => C.FICHA_EMPLEADO == p).MaxAsync();
+            return query.NumeroRendicion;
+        }
+
+        public Rendicion ObtenerDocumentoRendicion(int idrendicion)
+        {
+            var rendicion = context.Rendiciones.Find(idrendicion);
+            //foreach (var obj in rendicion.RendicionDetalle)
+            //{
+            //    int CodMotivo = obj.MotivoID;
+            //    string NombreMotivo = obj.MotivoGasto.Motivo;
+            //}
+            return rendicion;
+        }
+
+        public IEnumerable<Rendicion> Listar()
+        {
+            return context.Rendiciones.ToList();
         }
     }
 }

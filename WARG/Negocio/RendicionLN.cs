@@ -18,7 +18,10 @@ namespace Negocio
             rendicion.ESTADO_PLANILLA = "PENDIENTE";
 
             rendicion.FECHA_CAMBIO_ESTADO = DateTime.Now;
-            rendicion.FECHA_CREACION = DateTime.Now;            
+            rendicion.FECHA_CREACION = DateTime.Now;
+
+            var valor = obtenerUltimaRendicion(rendicion.FICHA_EMPLEADO);
+            rendicion.NumeroRendicion = valor + 1;
 
             var i=1;
             double montoTotal = 0;
@@ -26,19 +29,28 @@ namespace Negocio
             {
                 obj.FECHA_GASTO = DateTime.Now;
                 obj.SECUENCIA = i++;
+                obj.NumeroRendicion = rendicion.NumeroRendicion;
                 montoTotal = montoTotal + obj.MONTO_LINEA;
             }
 
-            rendicion.TOTAL_GASTADO = montoTotal;
-
-            var valor = obtenerUltimaRendicion(rendicion.FICHA_EMPLEADO);
+            rendicion.TOTAL_GASTADO = montoTotal;            
             return rendicionDAO.Insertar(rendicion);
         }
 
-        private string obtenerUltimaRendicion(string p)
+        private int obtenerUltimaRendicion(string p)
         {
            // throw new NotImplementedException();
             return rendicionDAO.ObtenerRendicion(p);
+        }
+
+        public IEnumerable<Rendicion> Listar()
+        {
+            return rendicionDAO.Listar();
+        }
+
+        public object Obtener(int id)
+        {
+            return rendicionDAO.ObtenerDocumentoRendicion(id);
         }
     }
 }
