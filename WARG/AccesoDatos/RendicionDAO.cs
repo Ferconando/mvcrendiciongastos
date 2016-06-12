@@ -42,13 +42,8 @@ namespace AccesoDatos
 
         public Rendicion ObtenerDocumentoRendicion(int idrendicion)
         {
-            var rendicion = context.Rendiciones.Find(idrendicion);
-            //foreach (var obj in rendicion.RendicionDetalle)
-            //{
-            //    int CodMotivo = obj.MotivoID;
-            //    string NombreMotivo = obj.MotivoGasto.Motivo;
-            //}
-            return rendicion;
+            return context.Rendiciones.Where(
+                p => p.Id == idrendicion).FirstOrDefault();
         }
 
         public IEnumerable<Rendicion> Listar()

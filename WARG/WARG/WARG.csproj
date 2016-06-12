@@ -240,6 +240,7 @@
     <Content Include="Views\MotivoGastos\Index.cshtml" />
     <Content Include="Views\Rendicion\Index.cshtml" />
     <Content Include="Views\Rendicion\ListarRendicion.cshtml" />
+    <Content Include="Views\Rendicion\EditarRendicion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -249,7 +250,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
+    <None Include="Views\Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccesoDatos\AccesoDatos.csproj">
@@ -283,7 +284,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51776</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51776/</IISUrl>
+          <IISUrl>http://localhost:51777/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

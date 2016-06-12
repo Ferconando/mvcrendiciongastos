@@ -70,7 +70,8 @@ namespace WARG.Controllers
             {
                 var rendicionLN = new RendicionLN();
                 var rendicion = rendicionLN.Obtener(id);
-                return View(rendicion);
+                @ViewBag.rendicion = rendicionLN.Obtener(id);          
+                return View("EditarRendicion",rendicion);
             }
             catch (Exception ex)
             {
@@ -79,8 +80,7 @@ namespace WARG.Controllers
                 @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
 
                 return View("Error");
-            }
-
+            }        
         }
 
     }

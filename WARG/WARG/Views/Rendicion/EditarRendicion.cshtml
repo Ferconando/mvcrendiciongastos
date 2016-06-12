@@ -1,0 +1,290 @@
+﻿@*@model IEnumerable<Entidades.RendicionDetalle>*@
+@model Entidades.Rendicion
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = "Index";    
+}
+
+    <div class="container-fluid">
+    @*<div class="row">
+        <h5>Rendición de Gastos </h5>
+    </div>*@
+
+
+
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a href="#red" data-toggle="tab">Documento</a></li>
+        <li><a href="#orange" data-toggle="tab">Detalle</a></li>
+    </ul>
+
+    <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane active" id="red">
+            @using (@Html.BeginForm("Grabar", "Rendicion", FormMethod.Post, new { @id = "frm-example" }))
+            {
+                <br>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-success">GRABAR RENDICION</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-2" style="font-size: 18px; font-weight: bold; color: #00539f; ">
+                        @ViewBag.Mensaje
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Id:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input class="form-control input-sm" id="NumeroRendicion" name="NumeroRendicion" value=@Model.NumeroRendicion>
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Empleado:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input class="form-control input-sm" id="FICHA_EMPLEADO" name="FICHA_EMPLEADO" value=@Model.FICHA_EMPLEADO>
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Fecha Inicial:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input type="date" class="form-control input-sm" id="FECHA_RENDICION_INI" name="FECHA_RENDICION_INI" value=@Model.FECHA_RENDICION_INI>
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Fecha Fin:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input type="date" class="form-control input-sm" id="FECHA_RENDICION_FIN" name="FECHA_RENDICION_FIN" value=@Model.FECHA_RENDICION_FIN>
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Fondo Inicial:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input class="form-control input-sm" id="FONDO_INICIAL" name="FONDO_INICIAL" value=@Model.FONDO_INICIAL>
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Glosa Gastos:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input class="form-control input-sm" id="GLOSA_GASTOS" name="GLOSA_GASTOS" value=@Model.GLOSA_GASTOS>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+
+        <div class="tab-pane" id="orange">
+            <br>
+            <div class="row top-buffer">
+                <div class="form-group col-md-2 top-buffer">
+                    <label class="control-label input-sm">PK_DETALLE:</label>
+                </div>
+                <div class="form-group col-md-3 top-buffer">
+                    <input class="form-control input-sm" id="NumeroRendicion" name="NumeroRendicion" value="">
+                </div>
+            </div>
+            <div class="row top-buffer">
+                <div class="form-group col-md-2 top-buffer">
+                    <label class="control-label input-sm">Fecha Gasto:</label>
+                </div>
+                <div class="form-group col-md-3 top-buffer">
+                    <input type="date" class="form-control input-sm" id="fecha_gasto" name="fecha_gasto" value="">
+                </div>
+            </div>
+            <div class="row top-buffer">
+                <div class="form-group col-md-2 top-buffer">
+                    <label class="control-label input-sm">Tipo Documento:</label>
+                </div>
+                <div class="form-group col-md-3 top-buffer">
+                    <input class="form-control input-sm" id="tipo_docto" name="tipo_docto" value="">
+                </div>
+            </div>
+            <div class="row top-buffer">
+                <div class="form-group col-md-2 top-buffer">
+                    <label class="control-label input-sm">Número Documento:</label>
+                </div>
+                <div class="form-group col-md-3 top-buffer">
+                    <input class="form-control input-sm" id="numero_docto" name="numero_docto" value="">
+                </div>
+            </div>
+            <div class="row top-buffer">
+                <div class="form-group col-md-2 top-buffer">
+                    <label class="control-label input-sm">Razón Social:</label>
+                </div>
+                <div class="form-group col-md-3 top-buffer">
+                    <input class="form-control input-sm" id="razon_social" name="razon_social" value="">
+                </div>
+            </div>
+            <div class="row top-buffer">
+                <div class="form-group col-md-2 top-buffer">
+                    <label class="control-label input-sm">Monto Linea:</label>
+                </div>
+                <div class="form-group col-md-3 top-buffer">
+                    <input class="form-control input-sm" s id="monto_linea" name="monto_linea" value="">
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <button class="btn btn-primary" onclick="Agregar(this)">AGREGAR DETALLE</button>
+                </div>
+            </div>
+        </div>
+
+            <div id="example_wrapper" class="dataTables_wrapper dt-jqueryui">
+                <table id="example" class="table table-bordered" cellspacing="0" role="grid" aria-describedby="example_info" style="width: 100%;">
+                    <thead>
+                        <tr role="row">
+
+
+                            <th>PK_DETALLE</th>
+                            <th>Motivo Gasto</th>
+                            <th>Fecha Gasto</th>
+                            <th>Tipo Documento</th>
+                            <th>Número Documento</th>
+                            <th>Razón Social</th>
+                            <th>Monto Linea</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size:smaller"></tbody>
+                   @foreach (var item in @Model.RendicionDetalle) {
+                    <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NumeroRendicion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MotivoGasto.Motivo)
+                            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FECHA_GASTO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TIPO_DOCTO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NUMERO_DOCTO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RAZON_SOCIAL)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MONTO_LINEA)
+                        </td>
+                        </tr>
+                    }
+                </table>
+
+
+
+</div>
+        </div>
+
+
+        <script>
+
+
+            $(document).ready(function () {
+
+                //$('#fecha_gasto').datepicker({
+                //    format: "dd/mm/yyyy"
+                //});
+
+                $('#example').DataTable({
+
+                    language: {
+                        "sProcessing": "Procesando...",
+                        "sLengthMenu": "Mostrar _MENU_ registros",
+                        "sZeroRecords": "No se encontraron resultados",
+                        "sEmptyTable": "Ningún dato disponible en esta tabla",
+                        "sInfo": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        "sInfoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "sInfoPostFix": "",
+                        "sSearch": "Buscar:",
+                        "sUrl": "",
+                        "sInfoThousands": ",",
+                        "sLoadingRecords": "Cargando...",
+                        "oPaginate": {
+                            "sFirst": "Primero",
+                            "sLast": "Último",
+                            "sNext": "Siguiente",
+                            "sPrevious": "Anterior"
+                        },
+                        "oAria": {
+                            "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                        }
+                    }
+              ,
+                    columns: [
+                    { "data": "NumeroRendicion" },
+                    { "data": "MotivoID" },
+                    { "data": "fecha_gasto" },
+                    { "data": "tipo_docto" },
+                    { "data": "numero_docto" },
+                    { "data": "razon_social" },
+                    { "data": "monto_linea" }
+                    ]
+
+
+
+                });
+
+
+                $('#frm-example').on('submit', function (e) {
+
+
+                    var table = $('#example').DataTable();
+                    var keys = [];
+                    var data = table.rows().data();
+                    data.each(function (value, index) {
+                        var jsonStr = JSON.stringify(value);
+                        keys.push(jsonStr);
+                    });
+
+                    $.ajax({
+                        url: '@Url.Action("SessionJSON", "Rendicion")',
+                        type: 'POST',
+                        data: { id: keys.join() },
+                        success: function (result) {
+                        }
+                    });
+
+                });
+
+            });
+
+
+
+            function Agregar(element) {
+                var table = $('#example').DataTable();
+                table.row.add({
+                    "NumeroRendicion": document.getElementById("NumeroRendicion").value,
+                    "MotivoID": document.getElementById("MotivoID").value,
+                    "fecha_gasto": document.getElementById("fecha_gasto").value,
+                    "tipo_docto": document.getElementById("tipo_docto").value,
+                    "numero_docto": document.getElementById("numero_docto").value,
+                    "razon_social": document.getElementById("razon_social").value,
+                    "monto_linea": document.getElementById("monto_linea").value
+                }).draw();
+            }
+        </script>
+
+
+
