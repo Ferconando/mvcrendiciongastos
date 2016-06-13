@@ -19,6 +19,7 @@ namespace Entidades
         public int MotivoID { get; set; }
         //[MaxLength(100)]
         [Required]//NOT NULL
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FECHA_GASTO { get; set; }
         [Required]//NOT NULL
         public int SECUENCIA { get; set; }

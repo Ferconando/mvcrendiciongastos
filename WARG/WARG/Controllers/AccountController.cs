@@ -176,8 +176,17 @@ namespace WARG.Controllers
                     usuario.EMAIL = model.Email;
                     usuario.NOMBRE = model.NombreCompleto;
                     usuario.Dni = model.Dni;
+                    usuario.Idusuario = user.Id;
+                    usuario.fechaCreacion = DateTime.Now;
+
+                    
 
                     var usuarioLN = new UsuarioLN();
+                    var correlativoUsuario = usuarioLN.obtenerProximoCorrelativo();
+
+                    var serie = ((int.Parse(correlativoUsuario.ToString().Substring(0, 3)))+1).ToString();
+                    var correlativo = "000000";
+                    usuario.correlativo = int.Parse(serie+correlativo);
                     usuarioLN.Insertar(usuario);
 
                     //BL INSERTAR.usuario(asd);

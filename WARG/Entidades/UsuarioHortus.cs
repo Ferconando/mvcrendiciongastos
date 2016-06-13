@@ -13,6 +13,8 @@ namespace Entidades
         public string EMAIL { get; set; }
         public string CARGO { get; set; }
         public string Dni { get; set; }
-    
+        public int correlativo { get; set; }
+        public string Idusuario { get; set; }
+        public DateTime fechaCreacion { get; set; }
     }
 }

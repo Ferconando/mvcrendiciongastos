@@ -29,15 +29,15 @@ namespace AccesoDatos
         public int ObtenerRendicion(string p)
         {
             var query =
-             (from Rendicion in context.Rendiciones
-              where Rendicion.FICHA_EMPLEADO == p
-              orderby Rendicion.NumeroRendicion descending
+             (from UsuarioHortus in context.Usuario
+              where UsuarioHortus.EMAIL == p
+              //orderby UsuarioHortus.correlativo descending
               select new
               {
-                  NumeroRendicion = Rendicion.NumeroRendicion
+                  correlativo = UsuarioHortus.correlativo
               }).FirstOrDefault();
 
-            return query.NumeroRendicion;
+            return query.correlativo;
         }
 
         public Rendicion ObtenerDocumentoRendicion(int idrendicion)

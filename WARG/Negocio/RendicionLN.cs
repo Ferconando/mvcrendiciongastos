@@ -25,14 +25,16 @@ namespace Negocio
 
             var i=1;
             double montoTotal = 0;
+
             foreach (var obj in rendicion.RendicionDetalle)
-            {
-                obj.FECHA_GASTO = DateTime.Now;
+            {                
                 obj.SECUENCIA = i++;
+                obj.FECHA_GASTO = DateTime.Now;
                 obj.NumeroRendicion = rendicion.NumeroRendicion;
                 montoTotal = montoTotal + obj.MONTO_LINEA;
             }
 
+            
             rendicion.TOTAL_GASTADO = montoTotal;            
             return rendicionDAO.Insertar(rendicion);
         }

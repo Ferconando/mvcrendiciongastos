@@ -54,5 +54,18 @@ namespace AccesoDatos
         {
             if (context != null) context.Dispose();
         }
+
+        public int ObtenerProximoCorrelativo()
+        {
+            var query =
+             (from UsuarioHortus in context.Usuario              
+              orderby UsuarioHortus.correlativo descending
+              select new
+              {
+                  correlativo = UsuarioHortus.correlativo
+              }).FirstOrDefault();           
+
+            return query.correlativo;
+        }
     }
 }

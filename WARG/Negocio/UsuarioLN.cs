@@ -36,5 +36,10 @@ namespace Negocio
         {
             return usuariodao.Obtener(MotivoId);
         }
+
+        public int obtenerProximoCorrelativo()
+        {
+            return usuariodao.ObtenerProximoCorrelativo();
+        }
     }
 }

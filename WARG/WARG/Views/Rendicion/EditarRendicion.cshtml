@@ -54,7 +54,8 @@
                         <label class="control-label input-sm">Fecha Inicial:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input type="date" class="form-control input-sm" id="FECHA_RENDICION_INI" name="FECHA_RENDICION_INI" value=@Model.FECHA_RENDICION_INI>
+                        @*<input type="date" class="form-control input-sm" id="FECHA_RENDICION_INI" name="FECHA_RENDICION_INI" value=@Model.FECHA_RENDICION_INI>*@
+                        @Html.TextBoxFor(m => m.FECHA_RENDICION_INI, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control input-sm" })
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -62,7 +63,8 @@
                         <label class="control-label input-sm">Fecha Fin:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input type="date" class="form-control input-sm" id="FECHA_RENDICION_FIN" name="FECHA_RENDICION_FIN" value=@Model.FECHA_RENDICION_FIN>
+                        @*<input type="date" class="form-control input-sm" id="FECHA_RENDICION_FIN" name="FECHA_RENDICION_FIN" value=@Model.FECHA_RENDICION_FIN>*@
+                        @Html.TextBoxFor(m => m.FECHA_RENDICION_FIN, "{0:yyyy-MM-dd}", new { @type = "date", @class = "form-control input-sm" })
                     </div>
                 </div>
                 <div class="row top-buffer">

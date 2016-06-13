@@ -60,6 +60,14 @@
     <Compile Include="Migrations\201606041929071_AgregarDNIUsuariosHortus.Designer.cs">
       <DependentUpon>201606041929071_AgregarDNIUsuariosHortus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606122036024_RelacionIdentity_TablaUsuario.cs" />
+    <Compile Include="Migrations\201606122036024_RelacionIdentity_TablaUsuario.Designer.cs">
+      <DependentUpon>201606122036024_RelacionIdentity_TablaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606122320391_FechaCreacionUsuario.cs" />
+    <Compile Include="Migrations\201606122320391_FechaCreacionUsuario.Designer.cs">
+      <DependentUpon>201606122320391_FechaCreacionUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Modelo.cs" />
     <Compile Include="MotivoGastoDAO.cs" />
@@ -87,6 +95,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606041929071_AgregarDNIUsuariosHortus.resx">
       <DependentUpon>201606041929071_AgregarDNIUsuariosHortus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606122036024_RelacionIdentity_TablaUsuario.resx">
+      <DependentUpon>201606122036024_RelacionIdentity_TablaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606122320391_FechaCreacionUsuario.resx">
+      <DependentUpon>201606122320391_FechaCreacionUsuario.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -18,10 +18,10 @@ namespace Entidades
         [Required]//NOT NULL
         public string FICHA_EMPLEADO { get; set; }
         [Required]//NOT NULL
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FECHA_RENDICION_INI { get; set; }
         [Required]//NOT NULL
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FECHA_RENDICION_FIN { get; set; }
                
         public double FONDO_INICIAL { get; set; }
