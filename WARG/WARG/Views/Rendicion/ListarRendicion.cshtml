@@ -10,6 +10,9 @@
 <p>
     @Html.ActionLink("Nueva Rendición", "Index")
 </p>
+<p>
+    @Html.ActionLink("Ver Rendiciones", "ListarRendicion", @User.Identity.GetUserName())
+</p>
 <table class="table">
     <tr>
         <th>

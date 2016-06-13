@@ -42,7 +42,7 @@ namespace WARG.Controllers
                 model.RendicionDetalle=lista;
                 var rendicionLN = new RendicionLN();
                 //model.RendicionDetalle(lista);
-                rendicionLN.Insertar(model);
+                rendicionLN.Insertar(model);                
                 return RedirectToAction("Index");
            
         }
@@ -58,10 +58,10 @@ namespace WARG.Controllers
         }
 
         // GET: Lista las rendiciones
-        public ActionResult ListarRendicion()
+        public ActionResult ListarRendicion(string usuarioLogueado)
         {
             var rendicionLN = new RendicionLN();
-            return View(rendicionLN.Listar());
+            return View(rendicionLN.Listar(usuarioLogueado));
         }
 
         public ActionResult Edit(int id)

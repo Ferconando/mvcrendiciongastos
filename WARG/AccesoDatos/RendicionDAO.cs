@@ -46,9 +46,26 @@ namespace AccesoDatos
                 p => p.Id == idrendicion).FirstOrDefault();
         }
 
-        public IEnumerable<Rendicion> Listar()
+        public IEnumerable<Rendicion> Listar(string usuarioLogueado)
         {
-            return context.Rendiciones.ToList();
+            //return context.Rendiciones.ToList();
+            return context.Rendiciones.Where(
+                p => p.FICHA_EMPLEADO == usuarioLogueado).ToList();
+        }
+
+        public void actualizarCorrelativoUsuario(int NumeroRendicion, string mail)
+        {  
+              var res = (from UsuarioHortus in context.Usuario
+              where UsuarioHortus.EMAIL == mail
+              select UsuarioHortus).FirstOrDefault();
+              res.correlativo = NumeroRendicion;
+               context.SaveChanges();
+              
+              
+              //orderby UsuarioHortus.correlativo descending
+            //context.Usuario.Attach(usuario);
+            //context.Entry(usuario).State = EntityState.Modified;
+            //return (context.SaveChanges() > 0);
         }
     }
 }

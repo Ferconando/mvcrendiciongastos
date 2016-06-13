@@ -22,7 +22,7 @@ namespace Negocio
 
             var valor = obtenerUltimaRendicion(rendicion.FICHA_EMPLEADO);
             rendicion.NumeroRendicion = valor + 1;
-
+            actualizarCorrelativoUsuario(rendicion.NumeroRendicion,rendicion.FICHA_EMPLEADO);
             var i=1;
             double montoTotal = 0;
 
@@ -39,20 +39,28 @@ namespace Negocio
             return rendicionDAO.Insertar(rendicion);
         }
 
+        private void actualizarCorrelativoUsuario(int NumeroRendicion,string mail)
+        {
+            rendicionDAO.actualizarCorrelativoUsuario(NumeroRendicion,mail);
+        }
+
         private int obtenerUltimaRendicion(string p)
         {
            // throw new NotImplementedException();
             return rendicionDAO.ObtenerRendicion(p);
         }
 
-        public IEnumerable<Rendicion> Listar()
+        public IEnumerable<Rendicion> Listar(string usuarioLogueado)
         {
-            return rendicionDAO.Listar();
+            return rendicionDAO.Listar(usuarioLogueado);
         }
 
         public object Obtener(int id)
         {
             return rendicionDAO.ObtenerDocumentoRendicion(id);
         }
+    
+
+    
     }
 }
