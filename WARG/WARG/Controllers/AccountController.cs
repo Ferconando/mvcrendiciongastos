@@ -156,6 +156,10 @@ namespace WARG.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
+
+                UserManager.AddToRole(user.Id, model.CargoEmpleado);
+
                 if (result.Succeeded)
                 {
                     //UserManager.AddToRole(user.Id, "Candidate");

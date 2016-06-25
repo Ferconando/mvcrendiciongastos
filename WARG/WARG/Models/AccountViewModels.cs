@@ -83,6 +83,7 @@ namespace WARG.Models
         public string NombreCompleto { get; set; }
         public string CargoEmpleado { get; set; }
         public string Dni { get; set; }
+        public string Roles { get; set; }
     }
 
     public class ResetPasswordViewModel
