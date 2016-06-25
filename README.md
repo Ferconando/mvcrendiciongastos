@@ -15,8 +15,6 @@ Correspondencia,Taxis,Avion,Buses,Fotocopias, Otros.
 * Registro de Items sin Comprobantes:
 Solo para uso de movilidad: Taxi, mototaxi, Microbus,Fluvial
 
-* Se debe validar los montos de acuerdo a la politica de gastos.(Documento por adjuntar)
-
 * Debe permitir registrar el monto asignado para el viaje.
 * Manejar estados: Registrado, Pagado
 
