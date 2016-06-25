@@ -44,7 +44,8 @@ namespace AccesoDatos.Migrations
                 p => p.Documento,
                 new TipoDocumento { Documento = "Factura" },
                 new TipoDocumento { Documento = "Boleta" },
-                new TipoDocumento { Documento="Ticket"}
+                new TipoDocumento { Documento="Ticket"},
+                new TipoDocumento { Documento = "SinDocumento" }
                 );
 
             context.Usuario.AddOrUpdate(                
