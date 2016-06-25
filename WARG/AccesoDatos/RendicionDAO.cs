@@ -69,5 +69,19 @@ namespace AccesoDatos
                context.SaveChanges();             
               
         }
+
+        public IEnumerable<Rendicion> ListarAll()
+        {
+            return context.Rendiciones.ToList();
+        }
+
+        public void actualizarEstadoRendicion(string estadoplanilla,int numerorendicion)
+        {
+            var res = (from Rendicion in context.Rendiciones
+                       where Rendicion.NumeroRendicion == numerorendicion
+                       select Rendicion).FirstOrDefault();
+            res.ESTADO_PLANILLA = estadoplanilla;
+            context.SaveChanges(); 
+        }
     }
 }

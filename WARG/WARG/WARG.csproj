@@ -249,7 +249,8 @@
     <Content Include="Views\Rendicion\Index.cshtml" />
     <Content Include="Views\Rendicion\ListarRendicion.cshtml" />
     <Content Include="Views\Rendicion\EditarRendicion.cshtml" />
-    <Content Include="Views\Rendicion\EstadosRendicion.cshtml" />
+    <Content Include="Views\Rendicion\ListarAllRendicion.cshtml" />
+    <Content Include="Views\Rendicion\CambioEstado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

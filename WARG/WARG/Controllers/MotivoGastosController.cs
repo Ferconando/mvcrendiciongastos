@@ -16,6 +16,7 @@ namespace WARG.Models
     {    
 
         // GET: MotivoGastos
+        [Authorize(Roles = "Admin,Administracion,Cobranzas,Comercial,Compras,Contabilidad,PostVenta,Registros,Sistemas")]
         public ActionResult Index()
         {
             var motivoLN = new MotivoLN();

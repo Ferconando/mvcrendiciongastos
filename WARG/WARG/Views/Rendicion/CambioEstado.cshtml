@@ -19,14 +19,43 @@
 
     <div id="my-tab-content" class="tab-content">
         <div class="tab-pane active" id="red">
-            @using (@Html.BeginForm("Grabar", "Rendicion", FormMethod.Post, new { @id = "frm-example" }))
+    @using (@Html.BeginForm("UpdateEstado", "Rendicion", FormMethod.Post, new { @id = "frm-example" }))
             {
-                <br>
-                @*<div class="row top-buffer">
-                    <div class="form-group col-md-3">
-                        <button type="submit" class="btn btn-success">FINALIZAR EDICION</button>
-                    </div>
-                </div>*@
+        <br>
+        @*<div class="row top-buffer">
+                <div class="form-group col-md-3">
+                    <button type="submit" class="btn btn-success">FINALIZAR EDICION</button>
+                </div>
+            </div>*@
+        @*@Html.DropDownList("EstadoRendicion", ViewBag.Name as IEnumerable<SelectListItem>, new { @class = "form-control top-buffer" })*@
+        <div class="row top-buffer">
+            <div class="form-group col-md-2 top-buffer">
+                <label class="control-label input-sm">CAMBIAR ESTADO:</label>
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.ESTADO_PLANILLA, new SelectList(
+                  new List<Object>{
+                       new { value = "APROBADO" , text = "APROBADO"  },
+                       new { value = "PENDIENTE" , text = "PENDIENTE" },
+                       new { value = "RECHAZADO" , text = "RECHAZADO"}
+                    },
+                  "value",
+                  "text",
+                   2))
+            </div>
+            <div class="row ">
+                <div class="form-group col-md-2 top-buffer">
+                    <label class="control-label input-sm">Id:</label>
+                </div>
+                <div class="form-group col-md-3 top-buffer">
+                    <input class="form-control input-sm" id="numerorendicion" name="numerorendicion" value=@Model.NumeroRendicion>
+                </div>
+            </div>
+        </div>
+             <div class="form-group col-md-3">
+                <button type="submit" class="btn btn-success">ACTUALIZAR ESTADO</button>
+            </div>
+
 
                 <div class="row">
                     <div class="form-group col-md-2" style="font-size: 18px; font-weight: bold; color: #00539f; ">
@@ -236,9 +265,7 @@
                 document.getElementById("monto_linea").readOnly = true;
                 document.getElementById("MotivoID").readOnly = true;
                 
-                //$('#fecha_gasto').datepicker({
-                //    format: "dd/mm/yyyy"
-                //});                
+
 
                 $('#example').DataTable({
 
@@ -293,26 +320,7 @@
                 });
 
 
-                $('#frm-example').on('submit', function (e) {
-
-
-                    var table = $('#example').DataTable();
-                    var keys = [];
-                    var data = table.rows().data();
-                    data.each(function (value, index) {
-                        var jsonStr = JSON.stringify(value);
-                        keys.push(jsonStr);
-                    });
-
-                    $.ajax({
-                        url: '@Url.Action("SessionJSON", "Rendicion")',
-                        type: 'POST',
-                        data: { id: keys.join() },
-                        success: function (result) {
-                        }
-                    });
-
-                });
+ 
 
             });
 
@@ -334,6 +342,25 @@
                     "monto_linea": document.getElementById("monto_linea").value
                 }).draw();
             }
+
+            @*$(document).on("change", "#ESTADO_PLANILLA", (function () {
+                var estadoplanilla = $("#NumeroRendicion").val();
+                var numerorendicion = $("#ESTADO_PLANILLA :selected").val();
+                alert(estadoplanilla + "" + numerorendicion);
+                var data = { estadoplanilla: estadoplanilla, numerorendicion: numerorendicion }
+
+                
+                $.ajax({
+                    url: '@Url.Action("UpdateEstado", "Rendicion")',
+                    type: 'POST',
+                    success: function (data) {
+                        if (data) {  // check if data is defined
+                            alert("Actualizado");
+                        }
+                    }
+                });
+            }));*@
+
         </script>
 
 

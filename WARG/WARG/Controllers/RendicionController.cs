@@ -15,6 +15,7 @@ namespace WARG.Controllers
     {
             
         // GET: /Rendicion/
+        [Authorize(Roles = "Admin,Administracion,Cobranzas,Comercial,Compras,Contabilidad,PostVenta,Registros,Sistemas")]
         public ActionResult Index(RendicionDetalle /*RendicionViewModel*/ model)
         {
 
@@ -54,10 +55,18 @@ namespace WARG.Controllers
         }
 
         // GET: Lista las rendiciones
+        [Authorize(Roles = "Admin,Administracion,Cobranzas,Comercial,Compras,Contabilidad,PostVenta,Registros,Sistemas")]
         public ActionResult ListarRendicion(string usuarioLogueado)
         {
             var rendicionLN = new RendicionLN();
             return View(rendicionLN.Listar(usuarioLogueado));
+        }
+
+        [Authorize(Roles = "Admin,Contabilidad")]
+        public ActionResult ListarAllRendicion(string usuarioLogueado)
+        {
+            var rendicionLN = new RendicionLN();
+            return View(rendicionLN.ListarAll());
         }
 
         public ActionResult Edit(int id)
@@ -82,6 +91,54 @@ namespace WARG.Controllers
 
                 return View("Error");
             }        
+        }
+
+        [Authorize(Roles = "Admin,Contabilidad")]
+        public ActionResult VerRendicionEstados(int id)
+        {
+            try
+            {
+                var rendicionLN = new RendicionLN();                
+                var rendicion = rendicionLN.Obtener(id);                
+                var motivoLN = new MotivoLN();
+                var tipodocumentoLogicaNegocio = new TipoDocumentoLogicaNegocio();
+                ViewBag.Categorias = motivoLN.Listar();
+                ViewBag.TipoDocumentos = tipodocumentoLogicaNegocio.Listar();
+                return View("CambioEstado", rendicion);
+            }
+            catch (Exception ex)
+            {
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
+            }
+        }
+
+        [Authorize(Roles = "Admin,Contabilidad")]
+        public ActionResult UpdateEstado(string ESTADO_PLANILLA, int numerorendicion)
+        { 
+                try
+            {
+                    var rendicionLN = new RendicionLN();                
+                //var rendicion = rendicionLN.Obtener(id); 
+
+                    rendicionLN.Actualizar(ESTADO_PLANILLA, numerorendicion);
+                // return View();
+                    //return View
+                    return RedirectToAction("ListarAllRendicion");
+                
+            }
+            catch (Exception ex)
+            {
+                @ViewBag.DescripcionError = ex.Message;
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                //return Json("Error", JsonRequestBehavior.AllowGet);
+                return View("Error");
+            }
         }
 
         [HttpPost]

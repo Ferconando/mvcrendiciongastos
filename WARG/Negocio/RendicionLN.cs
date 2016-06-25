@@ -86,8 +86,18 @@ namespace Negocio
         {
             return rendicionDAO.ObtenerDocumentoRendicion(id);
         }
-    
 
-    
+
+
+
+        public IEnumerable<Rendicion> ListarAll()
+        {
+            return rendicionDAO.ListarAll();
+        }
+
+        public void Actualizar(string estadoplanilla, int numerorendicion)
+        {
+            rendicionDAO.actualizarEstadoRendicion(estadoplanilla, numerorendicion);
+        }
     }
 }
