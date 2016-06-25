@@ -242,13 +242,12 @@
                 });
 
 
-                $('#frm-example').on('submit', function (e) {
-                    //var filas = $("#example tbody tr").length;
-                    //alert(filas);
-
-                    if ($("#example tbody tr").length < 2) {
-                        alert("Falta cargar detalle"); return;
-                    } 
+                $('#frm-example').on('submit', function (e) {                   
+                   
+                   
+                    //if ($("#example tbody tr").length < 1) {
+                    //    alert("Falta cargar detalle"); return false;
+                    //} 
 
                     var table = $('#example').DataTable();
                     var keys = [];
@@ -273,8 +272,15 @@
 
 
             function Agregar(element) {
+                var numerodocDetalle = $("#numero_docto").val();              
+                var razonsocial = $("#razon_social").val();
+                //alert(razonsocial);
+                var montolinea = $("#monto_linea").val();
+                //alert(montolinea);
 
-
+                if (numerodocDetalle == "") { alert("Número de documento es requerido"); return false; }
+                if (razonsocial == "") { alert("Razón social es requerido"); return false; }
+                if (montolinea == "") { alert("Monto de gasto es requerido"); return false; }
 
                 var table = $('#example').DataTable();
                 table.row.add({                    

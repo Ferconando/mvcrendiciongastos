@@ -33,7 +33,7 @@ namespace WARG.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Grabar(/*RendicionViewModel*/Rendicion model)
+        public ActionResult Grabar(Rendicion model)
         {
           
                 var lista = (List<RendicionDetalle>)Session["SelectListP"];
