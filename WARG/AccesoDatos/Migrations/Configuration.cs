@@ -30,7 +30,14 @@ namespace AccesoDatos.Migrations
                 p=> p.Motivo,
                 new MotivoGasto { Motivo="Desayuno"},
                 new MotivoGasto { Motivo="Almuerzo"},
-                new MotivoGasto { Motivo="Cena"}
+                new MotivoGasto { Motivo="Cena"},
+                new MotivoGasto { Motivo = "Hotel" },
+                new MotivoGasto { Motivo = "Telefono" },
+                new MotivoGasto { Motivo = "Correspondencia" },
+                new MotivoGasto { Motivo = "Taxis" },
+                new MotivoGasto { Motivo = "Avion" },
+                new MotivoGasto { Motivo = "Buses" },
+                new MotivoGasto { Motivo = "Fotocopias" }
                 );
 
             context.TipoDocumento.AddOrUpdate(
