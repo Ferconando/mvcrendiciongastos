@@ -32,20 +32,13 @@
                         @ViewBag.Mensaje
                     </div>
                 </div>
-                @*<div class="row ">
-                    <div class="form-group col-md-2 top-buffer">
-                        <label class="control-label input-sm">Id:</label>
-                    </div>
-                    <div class="form-group col-md-3 top-buffer">
-                        <input class="form-control input-sm" id="NumeroRendicion" name="NumeroRendicion" value="">
-                    </div>
-                </div>*@
+     
                 <div class="row top-buffer">
                     <div class="form-group col-md-2 top-buffer">
                         <label class="control-label input-sm">Empleado:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input class="form-control input-sm" id="FICHA_EMPLEADO" name="FICHA_EMPLEADO" value=@User.Identity.GetUserName()>
+                        <input class="form-control input-sm" required id="FICHA_EMPLEADO" name="FICHA_EMPLEADO" value=@User.Identity.GetUserName()>
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -53,7 +46,7 @@
                         <label class="control-label input-sm">Fecha Inicial:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input type="date" class="form-control input-sm" id="FECHA_RENDICION_INI" name="FECHA_RENDICION_INI" value="">
+                        <input type="date" class="form-control input-sm" required  id="FECHA_RENDICION_INI" name="FECHA_RENDICION_INI" value="">
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -61,7 +54,7 @@
                         <label class="control-label input-sm">Fecha Fin:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input type="date" class="form-control input-sm" id="FECHA_RENDICION_FIN" name="FECHA_RENDICION_FIN" value="">
+                        <input type="date" class="form-control input-sm" required  id="FECHA_RENDICION_FIN" name="FECHA_RENDICION_FIN" value="">
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -69,7 +62,7 @@
                         <label class="control-label input-sm">Fondo Inicial:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input class="form-control input-sm" id="FONDO_INICIAL" name="FONDO_INICIAL" value="">
+                        <input class="form-control input-sm" id="FONDO_INICIAL" required  name="FONDO_INICIAL" value="">
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -77,7 +70,7 @@
                         <label class="control-label input-sm">Glosa Gastos:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input class="form-control input-sm" id="GLOSA_GASTOS" name="GLOSA_GASTOS" value="">
+                        <input class="form-control input-sm" id="GLOSA_GASTOS" required name="GLOSA_GASTOS" value="">
                     </div>
                 </div>
 
@@ -100,7 +93,7 @@
                     <label class="control-label input-sm">Fecha Gasto:</label>
                 </div>
                 <div class="form-group col-md-3 top-buffer">
-                    <input type="date" class="form-control input-sm" id="fecha_gasto" name="fecha_gasto" value="">
+                    <input type="date" class="form-control input-sm" id="fecha_gasto"   name="fecha_gasto" value="">
                 </div>
             </div>
             @*<div class="row top-buffer">
@@ -130,7 +123,7 @@
                         <label class="control-label input-sm">Número Documento:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input class="form-control input-sm" id="numero_docto" name="numero_docto" value="">
+                        <input class="form-control input-sm" id="numero_docto"  name="numero_docto" value="">
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -138,7 +131,7 @@
                         <label class="control-label input-sm">Razón Social:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input class="form-control input-sm" id="razon_social" name="razon_social" value="">
+                        <input class="form-control input-sm" id="razon_social"  name="razon_social" value="">
                     </div>
                 </div>
                 <div class="row top-buffer">
@@ -146,7 +139,7 @@
                         <label class="control-label input-sm">Monto Linea:</label>
                     </div>
                     <div class="form-group col-md-3 top-buffer">
-                        <input class="form-control input-sm" s id="monto_linea" name="monto_linea" value="">
+                        <input class="form-control input-sm" s id="monto_linea"  name="monto_linea" value="">
                     </div>
                 </div>
 
@@ -250,7 +243,12 @@
 
 
                 $('#frm-example').on('submit', function (e) {
+                    //var filas = $("#example tbody tr").length;
+                    //alert(filas);
 
+                    if ($("#example tbody tr").length < 2) {
+                        alert("Falta cargar detalle"); return;
+                    } 
 
                     var table = $('#example').DataTable();
                     var keys = [];
@@ -275,6 +273,9 @@
 
 
             function Agregar(element) {
+
+
+
                 var table = $('#example').DataTable();
                 table.row.add({                    
                     "MotivoID": document.getElementById("MotivoID").value,

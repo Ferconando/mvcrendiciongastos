@@ -14,18 +14,20 @@ namespace Entidades
         public int Id { get; set; }
         [Required]//NOT NULL
         public int NumeroRendicion { get; set; }                
-        //[MaxLength(50)]
+       
         [Required]//NOT NULL
         public string FICHA_EMPLEADO { get; set; }
-        [Required]//NOT NULL
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        
+        [Required(ErrorMessage = "La fecha incial es requerido")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]        
         public DateTime FECHA_RENDICION_INI { get; set; }
-        [Required]//NOT NULL
+        [Required(ErrorMessage = "La fecha final es requerido")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime FECHA_RENDICION_FIN { get; set; }
-               
+
+        [Required(ErrorMessage = "El fondo inicial es requerido")]
         public double FONDO_INICIAL { get; set; }
-        [Required]//NOT NULL
+        [Required(ErrorMessage = "El total gasto es requerido")]
         public double TOTAL_GASTADO { get; set; }
         [Required]//NOT NULL
         public string ESTADO_PLANILLA { get; set; }
@@ -33,7 +35,7 @@ namespace Entidades
         public DateTime FECHA_CAMBIO_ESTADO { get; set; }
         [Required]//NOT NULL
         public DateTime FECHA_CREACION { get; set; }
-        [Required]//NOT NULL
+        [Required(ErrorMessage = "La glosa es requerida")]
         public string GLOSA_GASTOS { get; set; }       
         
                 

@@ -37,11 +37,20 @@ namespace WARG.Controllers
         {
           
                 var lista = (List<RendicionDetalle>)Session["SelectListP"];
-                model.RendicionDetalle=lista;
+            if (lista == null)
+            {
+                @ViewBag.DescripcionError = "";
+                @ViewData["Controller"] = ControllerContext.RouteData.Values["Controller"].ToString();
+                @ViewData["Acción"] = ControllerContext.RouteData.Values["Action"].ToString();
+
+                return View("Error");
+            }
+            model.RendicionDetalle = lista; 
                 var rendicionLN = new RendicionLN();                
                 rendicionLN.Insertar(model);                
                 return RedirectToAction("Index");
            
+
         }
 
         public ActionResult SessionJSON(String id)
