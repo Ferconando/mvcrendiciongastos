@@ -41,8 +41,8 @@ namespace AccesoDatos.Migrations
                 );
 
             context.Usuario.AddOrUpdate(                
-                new UsuarioHortus {NOMBRE="Fernando", CARGO="Sistemas", Dni="42085432",
-                    fechaCreacion=DateTime.Now, EMAIL="fernando.rondon23@gmail.com", correlativo=100000000}                
+                new UsuarioHortus {NOMBRE="usuarioSemilla", CARGO="Sistemas", Dni="00000000",
+                    fechaCreacion=DateTime.Now, EMAIL="usuario@correo.com", correlativo=100000000}                
                 );
             //
         }

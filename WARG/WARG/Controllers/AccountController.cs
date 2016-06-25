@@ -142,6 +142,9 @@ namespace WARG.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ApplicationDbContext context = new ApplicationDbContext();
+            var roles = context.Roles;
+            ViewBag.Name = new SelectList(context.Roles.ToList(), "Name", "Name");
             return View();
         }
 

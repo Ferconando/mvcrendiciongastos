@@ -39,6 +39,7 @@
                     <li>@Html.ActionLink("Motivo Gasto", "Index", "MotivoGastos")</li>
                     <li>@Html.ActionLink("Registrar", "Index", "Rendicion")</li>
                     <li>@Html.ActionLink("Reporte", "ListarRendicion",new { usuarioLogueado = @User.Identity.GetUserName() })</li>
+                    <li>@Html.ActionLink("Contabilidad", "EstadosRendicion", "Rendicion")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
