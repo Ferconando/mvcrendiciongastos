@@ -103,65 +103,81 @@
                     <input type="date" class="form-control input-sm" id="fecha_gasto" name="fecha_gasto" value="">
                 </div>
             </div>
-            <div class="row top-buffer">
+            @*<div class="row top-buffer">
                 <div class="form-group col-md-2 top-buffer">
                     <label class="control-label input-sm">Tipo Documento:</label>
                 </div>
                 <div class="form-group col-md-3 top-buffer">
                     <input class="form-control input-sm" id="tipo_docto" name="tipo_docto" value="">
                 </div>
-            </div>
+            </div>*@
             <div class="row top-buffer">
-                <div class="form-group col-md-2 top-buffer">
-                    <label class="control-label input-sm">Número Documento:</label>
-                </div>
-                <div class="form-group col-md-3 top-buffer">
-                    <input class="form-control input-sm" id="numero_docto" name="numero_docto" value="">
-                </div>
-            </div>
-            <div class="row top-buffer">
-                <div class="form-group col-md-2 top-buffer">
-                    <label class="control-label input-sm">Razón Social:</label>
-                </div>
-                <div class="form-group col-md-3 top-buffer">
-                    <input class="form-control input-sm" id="razon_social" name="razon_social" value="">
-                </div>
-            </div>
-            <div class="row top-buffer">
-                <div class="form-group col-md-2 top-buffer">
-                    <label class="control-label input-sm">Monto Linea:</label>
-                </div>
-                <div class="form-group col-md-3 top-buffer">
-                    <input class="form-control input-sm" s id="monto_linea" name="monto_linea" value="">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoDocumento, htmlAttributes: new { @class = "control-label col-md-2 top-buffer" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.CategoriaID, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.DropDownListFor(model => model.TipoDocumentoID,
+                                         new SelectList(ViewBag.TipoDocumentos, "TipoDocumentoID", "Documento"),
+                                "Seleccione el Tipo Documento --", new { @class = "form-control top-buffer" })
+                        @Html.ValidationMessageFor(model => model.TipoDocumentoID, "", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.MotivoGasto, htmlAttributes: new { @class = "control-label col-md-2 top-buffer" })
-                <div class="col-md-10">
-                    @*@Html.EditorFor(model => model.CategoriaID, new { htmlAttributes = new { @class = "form-control" } })*@
-                    @Html.DropDownListFor(model => model.MotivoID,
+
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Número Documento:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input class="form-control input-sm" id="numero_docto" name="numero_docto" value="">
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Razón Social:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input class="form-control input-sm" id="razon_social" name="razon_social" value="">
+                    </div>
+                </div>
+                <div class="row top-buffer">
+                    <div class="form-group col-md-2 top-buffer">
+                        <label class="control-label input-sm">Monto Linea:</label>
+                    </div>
+                    <div class="form-group col-md-3 top-buffer">
+                        <input class="form-control input-sm" s id="monto_linea" name="monto_linea" value="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MotivoGasto, htmlAttributes: new { @class = "control-label col-md-2 top-buffer" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.CategoriaID, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.DropDownListFor(model => model.MotivoID,
                                 new SelectList(ViewBag.Categorias, "MotivoID", "Motivo"),
                                 "Seleccione el Motivo --", new { @class = "form-control top-buffer" })
-                    @Html.ValidationMessageFor(model => model.MotivoID, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.MotivoID, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
 
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <button class="btn btn-primary" onclick="Agregar(this)">AGREGAR DETALLE</button>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <button class="btn btn-primary" onclick="Agregar(this)">AGREGAR DETALLE</button>
+                    </div>
                 </div>
             </div>
-        </div>
 
             <div id="example_wrapper" class="dataTables_wrapper dt-jqueryui">
                 <table id="example" class="table table-bordered" cellspacing="0" role="grid" aria-describedby="example_info" style="width: 100%;">
                     <thead>
                         <tr role="row">
 
+                            <th>Motivo ID</th>
                             <th>Motivo Gasto</th>
                             <th>Fecha Gasto</th>
+                            <th>TipoDocumento ID</th>
                             <th>Tipo Documento</th>
                             <th>Número Documento</th>
                             <th>Razón Social</th>
@@ -208,13 +224,26 @@
               ,
                     columns: [                    
                     { "data": "MotivoID" },
+                    { "data": "Motivo" },
                     { "data": "fecha_gasto" },
-                    { "data": "tipo_docto" },
+                    { "data": "TipoDocumentoID" },
+                    { "data": "Documento" },
                     { "data": "numero_docto" },
                     { "data": "razon_social" },
                     { "data": "monto_linea" }
                     ]
-
+,
+                    "columnDefs": [
+                    {
+                        "targets": [0],
+                        "visible": false,
+                        "searchable": false
+                    },
+                    {
+                        "targets": [3],
+                        "visible": false
+                    }
+                            ]
 
 
                 });
@@ -249,8 +278,10 @@
                 var table = $('#example').DataTable();
                 table.row.add({                    
                     "MotivoID": document.getElementById("MotivoID").value,
+                    "Motivo": $('#MotivoID :selected').text(),//document.getElementById("Motivo").value,
                     "fecha_gasto": document.getElementById("fecha_gasto").value,
-                    "tipo_docto": document.getElementById("tipo_docto").value,
+                    "TipoDocumentoID": document.getElementById("TipoDocumentoID").value,
+                    "Documento": $('#TipoDocumentoID :selected').text(),//document.getElementById("TipoDocumento").value,
                     "numero_docto": document.getElementById("numero_docto").value,
                     "razon_social": document.getElementById("razon_social").value,
                     "monto_linea": document.getElementById("monto_linea").value

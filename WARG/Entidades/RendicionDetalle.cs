@@ -29,9 +29,11 @@ namespace Entidades
         public string GLOSA { get; set; }
         [Required]//NOT NULL
         public double MONTO_LINEA { get; set; }
+        public int TipoDocumentoID { get; set; }
 
         //Relacion
         public virtual Rendicion Rendicion { get; set; }
         public virtual MotivoGasto MotivoGasto { get; set; }
+        public virtual TipoDocumento TipoDocumento { get; set; }
     }
 }

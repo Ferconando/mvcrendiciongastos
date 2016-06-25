@@ -10,9 +10,9 @@
 <p>
     @Html.ActionLink("Nueva Rendición", "Index")
 </p>
-<p>
+@*<p>
     @Html.ActionLink("Ver Rendiciones", "ListarRendicion", @User.Identity.GetUserName())
-</p>
+</p>*@
 <table class="table">
     <tr>
         <th>
@@ -60,9 +60,10 @@
         </td>
         
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            @*@Html.ActionLink("Ver", "Edit", new { id=item.Id })*@ 
+            @Html.ActionLink("Ver", "Edit", new { id = item.Id }, new { @class = "classname" })
+            @*@Html.ActionLink("Details", "Details", new { id = item.Id }) |*@
+            @*@Html.ActionLink("Eliminar", "Delete", new { id = item.Id })*@
         </td>
     </tr>
 }

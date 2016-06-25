@@ -21,6 +21,13 @@ namespace AccesoDatos
             return (context.SaveChanges() > 0);
         }
 
+        public bool Actualizar(Rendicion rendicion)
+        {
+            context.Rendiciones.Attach(rendicion);
+            context.Entry(rendicion).State = EntityState.Modified;
+            return (context.SaveChanges() > 0);
+        }
+
         public void Dispose()
         {
             if (context != null) context.Dispose();
@@ -59,13 +66,8 @@ namespace AccesoDatos
               where UsuarioHortus.EMAIL == mail
               select UsuarioHortus).FirstOrDefault();
               res.correlativo = NumeroRendicion;
-               context.SaveChanges();
+               context.SaveChanges();             
               
-              
-              //orderby UsuarioHortus.correlativo descending
-            //context.Usuario.Attach(usuario);
-            //context.Entry(usuario).State = EntityState.Modified;
-            //return (context.SaveChanges() > 0);
         }
     }
 }

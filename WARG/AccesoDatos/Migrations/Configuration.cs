@@ -32,6 +32,18 @@ namespace AccesoDatos.Migrations
                 new MotivoGasto { Motivo="Almuerzo"},
                 new MotivoGasto { Motivo="Cena"}
                 );
+
+            context.TipoDocumento.AddOrUpdate(
+                p => p.Documento,
+                new TipoDocumento { Documento = "Factura" },
+                new TipoDocumento { Documento = "Boleta" },
+                new TipoDocumento { Documento="Ticket"}
+                );
+
+            context.Usuario.AddOrUpdate(                
+                new UsuarioHortus {NOMBRE="Fernando", CARGO="Sistemas", Dni="42085432",
+                    fechaCreacion=DateTime.Now, EMAIL="fernando.rondon23@gmail.com", correlativo=100000000}                
+                );
             //
         }
     }

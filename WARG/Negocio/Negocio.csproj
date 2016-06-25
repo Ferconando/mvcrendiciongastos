@@ -42,6 +42,7 @@
     <Compile Include="MotivoLN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RendicionLN.cs" />
+    <Compile Include="TipoDocumentoLogicaNegocio.cs" />
     <Compile Include="UsuarioLN.cs" />
   </ItemGroup>
   <ItemGroup>
